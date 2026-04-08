@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
+<meta name="theme-color" content="#030202"/>
+<meta name="description" content="Madni Jewellers — Gujrat's most prestigious jewellery house. Gold · Diamonds · Gemstones · Bridal."/>
+<title>Madni Jewellers — Where Legacy Shines</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Space+Mono:wght@400;700&family=Rajdhani:wght@300;400;500;600&family=Noto+Nastaliq+Urdu:wght@400;700&family=Noto+Kufi+Arabic:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════════════════
+   MADNI JEWELLERS — ROLEX × CINEMATIC × MUGHAL
+   Dark Vault Luxury · 3 Themes · 3 Languages
+   Real Supabase Media · Live Gold Rates
+   ═══════════════════════════════════════════════════ */
+
+:root {
+  --bg:#030202; --bg2:#080604; --bg3:#0e0b08; --bg4:#161210; --bg5:#1e1914;
+  --gold:#C9A84C; --gold2:#F0E6C8; --gold3:#8B6914; --gold4:#E8D5A0;
+  --rose:#B76E79; --rose2:#D4959F;
+  --ruby:#5C0A14; --emerald:#062A1E; --sapphire:#071A3E; --platinum:#E8E8EC;
+  --text:#F5EEE6; --dim:rgba(245,238,230,.42); --dimmer:rgba(245,238,230,.18);
+  --border:rgba(201,168,76,.14); --border2:rgba(201,168,76,.28);
+  --font-title:'Cinzel',serif; --font-display:'Cormorant Garamond',serif;
+  --font-ui:'Space Mono',monospace; --font-body:'Rajdhani',sans-serif;
+  --hero-filter:saturate(.5) contrast(1.25) brightness(.35);
+  --nav-bg:rgba(3,2,2,.97);
+  --clip:polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);
+  --particle1:201,168,76; --particle2:183,110,121;
+}
+[data-theme="rose-gold"] {
+  --bg:#0c0408; --bg2:#14080d; --bg3:#1c0d13; --bg4:#261319; --bg5:#301920;
+  --gold:#C9A84C; --gold2:#FFE4EC; --gold3:#8B4F5A;
+  --rose:#D4959F; --rose2:#EBB8C0;
+  --text:#FFF0F4; --dim:rgba(255,240,244,.42); --border:rgba(183,110,121,.18);
+  --nav-bg:rgba(12,4,8,.97);
+  --particle1:183,110,121; --particle2:201,168,76;
+}
+[data-theme="diamond"] {
+  --bg:#F5F2EE; --bg2:#EDE8E0; --bg3:#E4DDD4; --bg4:#D8D0C4; --bg5:#CCC2B4;
+  --gold:#8B6914; --gold2:#C9A84C; --gold3:#5C4410; --gold4:#A07820;
+  --rose:#9B4F5A; --rose2:#B76E79;
+  --text:#0D0A07; --dim:rgba(13,10,7,.45); --dimmer:rgba(13,10,7,.2);
+  --border:rgba(139,105,20,.18); --border2:rgba(139,105,20,.35);
+  --nav-bg:rgba(245,242,238,.97);
+  --particle1:139,105,20; --particle2:155,79,90;
+}
+
+[data-lang="ur"],[data-lang="ar"] { direction:rtl; font-family:'Noto Nastaliq Urdu','Noto Kufi Arabic',serif !important; }
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html { scroll-behavior:smooth; font-size:16px; }
+body { background:var(--bg); color:var(--text); font-family:var(--font-body); overflow-x:hidden; cursor:none; transition:background .9s ease, color .9s ease; }
+::selection { background:rgba(201,168,76,.2); }
+::-webkit-scrollbar { width:2px; }
+::-webkit-scrollbar-thumb { background:linear-gradient(var(--gold),var(--rose)); }
+
+/* ── CURSOR ── */
+#CUR { position:fixed; width:6px; height:6px; background:var(--gold); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width .15s,height .15s; mix-blend-mode:difference; }
+#CURR { position:fixed; width:32px; height:32px; border:1px solid rgba(201,168,76,.35); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:all .12s ease; }
+#CURR.hov { width:52px; height:52px; border-color:var(--gold); border-width:1.5px; }
+#CTRAIL { position:fixed; inset:0; pointer-events:none; z-index:9997; overflow:hidden; }
+
+/* ── OVERLAYS ── */
+#PCVS { position:fixed; inset:0; pointer-events:none; z-index:2; }
+#SPOT { position:fixed; inset:0; pointer-events:none; z-index:3; background:radial-gradient(circle 280px at var(--mx,50%) var(--my,50%),rgba(201,168,76,.035) 0%,transparent 70%); }
+#VIGNETTE { position:fixed; inset:0; pointer-events:none; z-index:4; background:radial-gradient(ellipse 80% 80% at 50% 50%,transparent 45%,rgba(0,0,0,.7) 100%); }
+#NOISE { position:fixed; inset:0; z-index:9990; pointer-events:none; opacity:.016; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+/* ── DIAMOND REFRACTION ── */
+#REFRACTION { position:fixed; inset:0; pointer-events:none; z-index:5; overflow:hidden; opacity:0; transition:opacity 1s; }
+.refr-ray { position:absolute; width:1px; height:200%; background:linear-gradient(180deg,transparent,rgba(255,255,255,.06),transparent); transform-origin:top; animation:refrRot 12s ease-in-out infinite; }
+.refr-ray:nth-child(1) { left:50%; animation-delay:0s; transform:rotate(-15deg); }
+.refr-ray:nth-child(2) { left:52%; animation-delay:1s; background:linear-gradient(180deg,transparent,rgba(201,168,76,.04),transparent); transform:rotate(-8deg); }
+.refr-ray:nth-child(3) { left:48%; animation-delay:2s; background:linear-gradient(180deg,transparent,rgba(183,110,121,.04),transparent); transform:rotate(-22deg); }
+.refr-ray:nth-child(4) { left:55%; animation-delay:3s; transform:rotate(5deg); }
+.refr-ray:nth-child(5) { left:45%; animation-delay:4s; transform:rotate(-30deg); }
+@keyframes refrRot { 0%,100%{opacity:.3;transform:rotate(var(--r,0deg)) scaleX(1)} 50%{opacity:1;transform:rotate(calc(var(--r,0deg) + 5deg)) scaleX(2)} }
+
+/* ── RATES TICKER ── */
+#TICKER { position:fixed; top:0; left:0; right:0; z-index:802; height:28px; background:rgba(3,2,2,.92); border-bottom:1px solid var(--border); overflow:hidden; display:flex; align-items:center; backdrop-filter:blur(20px); }
+.tick-track { display:flex; gap:4rem; animation:tickMove 50s linear infinite; white-space:nowrap; align-items:center; }
+.tick-item { font-family:var(--font-ui); font-size:.38rem; letter-spacing:.3em; color:var(--dim); text-transform:uppercase; display:flex; align-items:center; gap:.6rem; }
+.tick-val { color:var(--gold); font-weight:700; }
+.tick-gem { font-size:.65rem; }
+@keyframes tickMove { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ── THEME & LANG SWITCHERS ── */
+#THEME-SW { position:fixed; top:50%; right:0; transform:translateY(-50%); z-index:700; display:flex; flex-direction:column; border-radius:8px 0 0 8px; overflow:hidden; box-shadow:-4px 0 24px rgba(0,0,0,.6); }
+.th-btn { width:42px; height:48px; border:none; cursor:pointer; font-size:.95rem; transition:all .3s; position:relative; display:flex; align-items:center; justify-content:center; }
+.th-btn::before { content:attr(data-tip); position:absolute; right:100%; white-space:nowrap; background:var(--bg2); border:1px solid var(--border); padding:4px 12px; font-family:var(--font-ui); font-size:.38rem; letter-spacing:.2em; color:var(--text); text-transform:uppercase; opacity:0; transition:opacity .2s; pointer-events:none; border-radius:4px 0 0 4px; }
+.th-btn:hover::before { opacity:1; }
+.th-btn.on { box-shadow:inset -3px 0 0 var(--gold); }
+.th-royal { background:#080604; border-left:2px solid #C9A84C; }
+.th-rose  { background:#14080d; border-left:2px solid #B76E79; }
+.th-diam  { background:#EDE8E0; border-left:2px solid #8B6914; }
+
+#LANG-SW { position:fixed; bottom:7rem; left:0; z-index:700; display:flex; flex-direction:column; border-radius:0 6px 6px 0; overflow:hidden; }
+.lg-btn { width:40px; height:36px; border:none; background:rgba(8,6,4,.9); border-right:2px solid var(--border); color:var(--dim); font-family:var(--font-ui); font-size:.58rem; font-weight:700; cursor:pointer; transition:all .3s; }
+.lg-btn.on { color:var(--gold); border-right-color:var(--gold); background:rgba(201,168,76,.08); }
+.lg-btn:hover { color:var(--gold); }
+
+/* ── AUTH SCREEN ── */
+#AUTH { position:fixed; inset:0; z-index:9000; background:#010101; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.auth-vid { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:saturate(.18) brightness(.22) contrast(1.2); }
+.auth-ov { position:absolute; inset:0; background:linear-gradient(135deg,rgba(1,1,1,.92),rgba(3,2,2,.78),rgba(1,1,1,.95)); }
+/* Corner brackets */
+.auth-brk { position:absolute; width:40px; height:40px; }
+.auth-brk.tl { top:2rem; left:2rem; border-top:1px solid rgba(201,168,76,.3); border-left:1px solid rgba(201,168,76,.3); }
+.auth-brk.tr { top:2rem; right:2rem; border-top:1px solid rgba(201,168,76,.3); border-right:1px solid rgba(201,168,76,.3); }
+.auth-brk.bl { bottom:2rem; left:2rem; border-bottom:1px solid rgba(183,110,121,.25); border-left:1px solid rgba(183,110,121,.25); }
+.auth-brk.br { bottom:2rem; right:2rem; border-bottom:1px solid rgba(183,110,121,.25); border-right:1px solid rgba(183,110,121,.25); }
+.auth-particle { position:absolute; border-radius:50%; pointer-events:none; animation:authFloat linear infinite; }
+@keyframes authFloat { 0%{transform:translateY(100vh) scale(0);opacity:0} 10%{opacity:.7} 90%{opacity:.2} 100%{transform:translateY(-10vh) scale(1.8);opacity:0} }
+.auth-box { position:relative; z-index:2; text-align:center; padding:3.5rem 2.8rem; background:rgba(4,3,2,.96); border:1px solid rgba(201,168,76,.12); width:min(480px,94vw); clip-path:var(--clip); backdrop-filter:blur(60px); }
+.auth-topline { position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--gold),var(--rose),var(--gold),transparent); animation:toplineAnim 3s ease-in-out infinite; }
+@keyframes toplineAnim { 0%,100%{opacity:.25} 50%{opacity:1} }
+.auth-crown { font-size:2.8rem; display:block; margin-bottom:.6rem; animation:crownPulse 5s ease-in-out infinite; filter:drop-shadow(0 0 18px rgba(201,168,76,.4)); }
+@keyframes crownPulse { 0%,100%{transform:scale(1) rotate(0deg)} 50%{transform:scale(1.05) rotate(1deg)} }
+.auth-logo-text { font-family:var(--font-title); font-size:3.5rem; letter-spacing:.28em; background:linear-gradient(135deg,#F0E6C8,#C9A84C,#B76E79,#C9A84C); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; filter:drop-shadow(0 0 24px rgba(201,168,76,.3)); }
+.auth-jewellers { font-family:var(--font-title); font-size:.75rem; letter-spacing:.7em; color:rgba(201,168,76,.4); text-transform:uppercase; margin:.15rem 0 .3rem; }
+.auth-tagline { font-family:var(--font-display); font-size:.95rem; font-style:italic; color:rgba(245,238,230,.28); letter-spacing:.06em; margin-bottom:2rem; }
+.auth-ornament { display:flex; align-items:center; gap:1rem; margin-bottom:2rem; }
+.auth-orn-line { flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(201,168,76,.2)); }
+.auth-orn-line.r { background:linear-gradient(-90deg,transparent,rgba(201,168,76,.2)); }
+.auth-orn-sym { font-size:.75rem; color:rgba(201,168,76,.4); }
+.auth-inp { width:100%; background:transparent; border:none; border-bottom:1px solid rgba(201,168,76,.22); color:rgba(245,238,230,.88); padding:.9rem .6rem; font-family:var(--font-body); font-size:1rem; outline:none; display:block; margin-bottom:.85rem; transition:border-color .3s; letter-spacing:.04em; }
+.auth-inp:focus { border-bottom-color:rgba(201,168,76,.55); }
+.auth-inp::placeholder { color:rgba(245,238,230,.18); font-style:italic; }
+.auth-err { display:none; font-family:var(--font-ui); font-size:.38rem; color:#ff6b6b; padding:.35rem .6rem; background:rgba(255,59,48,.07); border:1px solid rgba(255,59,48,.15); margin-bottom:.75rem; text-align:left; letter-spacing:.08em; }
+.auth-btn { width:100%; background:transparent; border:1px solid rgba(201,168,76,.32); color:rgba(245,238,230,.88); padding:1.1rem; font-family:var(--font-ui); font-size:.55rem; font-weight:700; letter-spacing:.55em; cursor:pointer; text-transform:uppercase; clip-path:var(--clip); position:relative; overflow:hidden; transition:all .4s; margin-bottom:1.5rem; }
+.auth-btn::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(201,168,76,.2),rgba(183,110,121,.12)); transform:scaleX(0); transform-origin:left; transition:transform .5s cubic-bezier(.16,1,.3,1); }
+.auth-btn:hover::before { transform:scaleX(1); }
+.auth-btn:hover { border-color:rgba(201,168,76,.6); letter-spacing:.65em; }
+.auth-foot { font-family:var(--font-ui); font-size:.32rem; letter-spacing:.15em; color:rgba(245,238,230,.1); text-transform:uppercase; }
+
+/* ── SPLASH ── */
+#SPLASH { position:fixed; inset:0; z-index:5000; background:var(--bg); display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; }
+#SPLASH.out { animation:splashOut 1.5s cubic-bezier(.16,1,.3,1) forwards; }
+@keyframes splashOut { to{opacity:0;transform:scale(1.05);pointer-events:none} }
+.sp-vid { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:var(--hero-filter); }
+.sp-ov { position:absolute; inset:0; background:linear-gradient(180deg,rgba(3,2,2,.98) 0%,rgba(3,2,2,.45) 45%,rgba(3,2,2,.88) 85%,rgba(3,2,2,.99) 100%); }
+/* Mughal arch ornament lines */
+.sp-arch { position:absolute; inset:0; pointer-events:none; }
+.sp-arch::before { content:''; position:absolute; top:10%; left:50%; transform:translateX(-50%); width:min(600px,85vw); height:70%; border:1px solid rgba(201,168,76,.06); border-radius:50% 50% 0 0 / 30% 30% 0 0; }
+.sp-arch::after { content:''; position:absolute; top:12%; left:50%; transform:translateX(-50%); width:min(560px,80vw); height:65%; border:1px solid rgba(201,168,76,.04); border-radius:50% 50% 0 0 / 30% 30% 0 0; }
+.sp-lines { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+.sp-line { position:absolute; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,rgba(201,168,76,.1),transparent); animation:spLine 16s linear infinite; }
+.sp-line:nth-child(1){top:25%;animation-delay:0s}
+.sp-line:nth-child(2){top:55%;animation-delay:6s}
+.sp-line:nth-child(3){top:78%;animation-delay:11s;opacity:.5}
+@keyframes spLine { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
+.sp-c { position:relative; z-index:2; text-align:center; padding:0 2rem; }
+.sp-pre { font-family:var(--font-ui); font-size:.42rem; letter-spacing:.85em; color:rgba(201,168,76,.45); text-transform:uppercase; margin-bottom:1.8rem; opacity:0; animation:fadeUp .8s .3s both; }
+.sp-crown { font-size:clamp(2rem,5vw,3rem); display:block; margin-bottom:1rem; filter:drop-shadow(0 0 30px rgba(201,168,76,.5)); opacity:0; animation:fadeUp .8s .5s both; }
+.sp-title { font-family:var(--font-title); line-height:.78; letter-spacing:.05em; }
+.sp-letter { display:inline-block; font-size:clamp(3.8rem,18vw,11rem); background:linear-gradient(160deg,#F0E6C8 0%,#C9A84C 28%,#E8D5A0 55%,#B76E79 80%,#C9A84C 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; filter:drop-shadow(0 0 60px rgba(201,168,76,.4)); opacity:0; transform:translateY(50px) rotateX(-25deg); animation:letterIn .75s cubic-bezier(.16,1,.3,1) forwards; }
+.sp-letter:nth-child(1){animation-delay:.65s}
+.sp-letter:nth-child(2){animation-delay:.8s}
+.sp-letter:nth-child(3){animation-delay:.95s}
+.sp-letter:nth-child(4){animation-delay:1.1s}
+.sp-letter:nth-child(5){animation-delay:1.25s}
+@keyframes letterIn { to{opacity:1;transform:translateY(0) rotateX(0)} }
+.sp-jewellers { font-family:var(--font-title); font-size:clamp(.75rem,2.5vw,1.2rem); letter-spacing:.7em; color:rgba(201,168,76,.38); text-transform:uppercase; margin-top:.3rem; opacity:0; animation:fadeUp .8s 1.4s both; }
+.sp-tagline { font-family:var(--font-display); font-size:clamp(.85rem,2vw,1.1rem); font-weight:300; font-style:italic; letter-spacing:.12em; color:rgba(245,238,230,.28); margin-top:.6rem; opacity:0; animation:fadeUp .8s 1.6s both; }
+/* Ornamental divider */
+.sp-orn { display:flex; align-items:center; justify-content:center; gap:1.2rem; margin:2.2rem auto; opacity:0; animation:fadeUp .8s 1.8s both; }
+.sp-orn-line { width:80px; height:1px; background:linear-gradient(90deg,transparent,rgba(201,168,76,.35)); }
+.sp-orn-line.r { transform:scaleX(-1); }
+.sp-orn-sym { font-size:.75rem; color:rgba(201,168,76,.5); letter-spacing:.3em; }
+.sp-enter { background:transparent; border:1px solid rgba(201,168,76,.35); color:rgba(245,238,230,.85); font-family:var(--font-ui); font-size:.58rem; font-weight:700; letter-spacing:.55em; padding:1.15rem 4rem; cursor:pointer; text-transform:uppercase; clip-path:var(--clip); position:relative; overflow:hidden; transition:all .45s; opacity:0; animation:fadeUp .8s 2s both; }
+.sp-enter::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(201,168,76,.18),rgba(183,110,121,.1)); transform:translateX(-101%); transition:transform .55s cubic-bezier(.16,1,.3,1); }
+.sp-enter:hover::before { transform:translateX(0); }
+.sp-enter:hover { letter-spacing:.65em; border-color:rgba(201,168,76,.6); }
+.sp-stats { position:absolute; bottom:0; left:0; right:0; display:grid; grid-template-columns:repeat(4,1fr); padding:1.5rem; background:linear-gradient(0deg,rgba(3,2,2,.98),transparent); opacity:0; animation:fadeUp .8s 1.4s both; text-align:center; }
+.sp-sn { font-family:var(--font-ui); font-size:clamp(.9rem,2.5vw,1.6rem); font-weight:700; background:linear-gradient(135deg,var(--gold2),var(--gold)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.sp-sl { font-family:var(--font-ui); font-size:.35rem; letter-spacing:.25em; color:rgba(245,238,230,.2); text-transform:uppercase; margin-top:4px; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+
+/* ── SITE ── */
+#SITE { display:none; }
+#SITE.on { display:block; }
+
+/* ── NAV ── */
+#NAV { position:fixed; top:28px; left:0; right:0; z-index:800; padding:1.1rem 2.5rem; display:flex; align-items:center; justify-content:space-between; transition:all .6s ease; }
+#NAV.scrolled { background:var(--nav-bg); backdrop-filter:blur(35px); border-bottom:1px solid var(--border); }
+.nav-brand { display:flex; align-items:center; gap:.75rem; cursor:pointer; }
+.nav-crown-icon { font-size:1.5rem; filter:drop-shadow(0 0 6px rgba(201,168,76,.35)); transition:transform .4s; }
+.nav-brand:hover .nav-crown-icon { transform:scale(1.12) rotate(5deg); }
+.nav-name { font-family:var(--font-title); font-size:1.35rem; letter-spacing:.2em; background:linear-gradient(135deg,var(--gold2),var(--gold),var(--rose)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.nav-links { display:flex; gap:2.8rem; list-style:none; }
+.nav-links a { font-family:var(--font-ui); font-size:.44rem; letter-spacing:.4em; color:var(--dim); text-decoration:none; text-transform:uppercase; cursor:pointer; transition:color .3s; position:relative; padding-bottom:3px; }
+.nav-links a::after { content:''; position:absolute; bottom:0; left:0; width:0; height:1px; background:linear-gradient(90deg,var(--gold),var(--rose)); transition:width .35s; }
+.nav-links a:hover { color:var(--text); }
+.nav-links a:hover::after { width:100%; }
+.nav-right { display:flex; align-items:center; gap:.75rem; }
+.nav-rate-pill { font-family:var(--font-ui); font-size:.4rem; letter-spacing:.18em; color:var(--gold); background:rgba(201,168,76,.07); border:1px solid var(--border); padding:.3rem .8rem; white-space:nowrap; }
+.nav-btn { background:transparent; border:1px solid var(--border); color:var(--gold); padding:.5rem 1.1rem; font-family:var(--font-ui); font-size:.44rem; letter-spacing:.2em; cursor:pointer; text-transform:uppercase; transition:all .3s; }
+.nav-btn:hover { border-color:var(--gold); background:rgba(201,168,76,.06); }
+.nav-cta { background:linear-gradient(135deg,var(--gold),var(--rose)); color:var(--bg); border:none; font-weight:700; }
+.nav-cta:hover { filter:brightness(1.1); transform:translateY(-1px); }
+
+/* ── HERO ── */
+#HERO { position:relative; height:100vh; min-height:700px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+#H-VID { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:var(--hero-filter); transform:scale(1.06); transition:filter .9s ease; }
+.h-ov { position:absolute; inset:0; background:linear-gradient(135deg,rgba(3,2,2,.96) 0%,rgba(3,2,2,.25) 52%,rgba(3,2,2,.9) 100%); }
+/* Mughal grid */
+.h-grid { position:absolute; inset:0; pointer-events:none; background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size:100px 100px; opacity:.28; animation:gridDrift 40s linear infinite; }
+@keyframes gridDrift { from{background-position:0 0} to{background-position:100px 100px} }
+/* Diagonal light sweep */
+.h-sweep { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+.h-sweep::before { content:''; position:absolute; top:-50%; left:60%; width:1px; height:200%; background:linear-gradient(180deg,transparent 10%,rgba(201,168,76,.12) 45%,rgba(183,110,121,.06) 55%,transparent 90%); transform:rotate(15deg); animation:sweepAnim 9s ease-in-out infinite; }
+@keyframes sweepAnim { 0%,100%{opacity:.4;transform:rotate(15deg) translateX(0)} 50%{opacity:1;transform:rotate(15deg) translateX(30px)} }
+.h-c { position:relative; z-index:4; text-align:center; padding:0 1.5rem; max-width:1100px; }
+.h-badge { display:inline-flex; align-items:center; gap:10px; border:1px solid var(--border); padding:.5rem 1.6rem; font-family:var(--font-ui); font-size:.44rem; letter-spacing:.5em; color:var(--gold); text-transform:uppercase; margin-bottom:2.2rem; backdrop-filter:blur(15px); background:rgba(3,2,2,.25); animation:badgePulse 5s ease infinite; }
+.h-bdot { width:5px; height:5px; background:var(--gold); border-radius:50%; animation:dotPulse 2.5s infinite; flex-shrink:0; }
+@keyframes badgePulse { 0%,100%{border-color:var(--border)} 50%{border-color:rgba(201,168,76,.35)} }
+@keyframes dotPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.3;transform:scale(.6)} }
+.h-crown { font-size:clamp(2rem,4.5vw,3.2rem); display:block; margin-bottom:.9rem; filter:drop-shadow(0 0 35px rgba(201,168,76,.5)); animation:crownFloat 7s ease-in-out infinite; }
+@keyframes crownFloat { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-10px) rotate(1deg)} }
+.h-title { font-family:var(--font-title); font-size:clamp(3rem,14vw,9.5rem); line-height:.8; letter-spacing:.02em; margin-bottom:.6rem; }
+.h-t1 { display:block; background:linear-gradient(135deg,var(--text),rgba(245,238,230,.5)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.h-t2 { display:block; background:linear-gradient(135deg,var(--gold2) 0%,var(--gold) 35%,var(--rose) 70%,var(--gold) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; filter:drop-shadow(0 0 70px rgba(201,168,76,.28)); }
+.h-jewellers { font-family:var(--font-title); font-size:clamp(.65rem,2vw,1.1rem); letter-spacing:.9em; color:rgba(201,168,76,.32); text-transform:uppercase; margin-bottom:1.8rem; }
+.h-desc { font-family:var(--font-display); font-size:clamp(.9rem,2vw,1.2rem); font-weight:300; font-style:italic; color:var(--dim); line-height:1.8; margin-bottom:2.8rem; letter-spacing:.05em; }
+/* Ornamental buttons */
+.h-btns { display:flex; gap:1.2rem; justify-content:center; flex-wrap:wrap; }
+.btn-primary { background:transparent; border:1px solid var(--gold); color:var(--gold); padding:1.15rem 3.2rem; font-family:var(--font-ui); font-size:.56rem; letter-spacing:.42em; text-transform:uppercase; cursor:pointer; clip-path:var(--clip); position:relative; overflow:hidden; transition:all .45s; }
+.btn-primary::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,var(--gold),var(--rose)); transform:scaleX(0); transform-origin:left; transition:transform .5s cubic-bezier(.16,1,.3,1); z-index:-1; }
+.btn-primary:hover::before { transform:scaleX(1); }
+.btn-primary:hover { color:var(--bg); border-color:transparent; transform:translateY(-3px); box-shadow:0 20px 50px rgba(201,168,76,.2); }
+.btn-secondary { background:transparent; border:1px solid var(--border); color:var(--text); padding:1.15rem 3.2rem; font-family:var(--font-ui); font-size:.56rem; letter-spacing:.42em; text-transform:uppercase; cursor:pointer; clip-path:var(--clip); transition:all .35s; }
+.btn-secondary:hover { border-color:var(--gold); color:var(--gold); transform:translateY(-2px); }
+.h-scroll { position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; cursor:pointer; z-index:4; animation:scrollBob 3.5s ease-in-out infinite; }
+.h-scroll-txt { font-family:var(--font-ui); font-size:.38rem; letter-spacing:.55em; color:var(--dimmer); text-transform:uppercase; }
+.h-scroll-line { width:1px; height:50px; background:linear-gradient(var(--gold),transparent); }
+@keyframes scrollBob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(7px)} }
+
+/* ── MARQUEE ── */
+.marq-wrap { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:.6rem 0; overflow:hidden; position:relative; }
+.marq-wrap::before,.marq-wrap::after { content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; pointer-events:none; }
+.marq-wrap::before { left:0; background:linear-gradient(90deg,var(--bg2),transparent); }
+.marq-wrap::after { right:0; background:linear-gradient(-90deg,var(--bg2),transparent); }
+.marq-track { display:flex; gap:3.5rem; animation:marqAnim 45s linear infinite; white-space:nowrap; }
+.marq-item { font-family:var(--font-ui); font-size:.45rem; letter-spacing:.38em; color:var(--dim); text-transform:uppercase; display:flex; align-items:center; gap:.9rem; transition:color .3s; }
+.marq-item:hover { color:var(--gold); }
+.marq-gem { font-size:.75rem; }
+@keyframes marqAnim { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ── SECTION ARCHITECTURE ── */
+.sec-hd { text-align:center; padding:6rem 2rem 4rem; }
+.sec-ornament { display:flex; align-items:center; justify-content:center; gap:1rem; margin-bottom:1.2rem; }
+.sec-orn-line { width:50px; height:1px; background:linear-gradient(90deg,transparent,var(--gold)); }
+.sec-orn-line.r { transform:scaleX(-1); }
+.sec-orn-sym { font-family:var(--font-ui); font-size:.5rem; letter-spacing:.4em; color:var(--gold); text-transform:uppercase; }
+.sec-title { font-family:var(--font-title); font-size:clamp(2.2rem,7vw,5.5rem); line-height:.85; background:linear-gradient(135deg,var(--text),var(--gold)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:.6rem; }
+.sec-sub { font-family:var(--font-display); font-size:1.1rem; font-weight:300; font-style:italic; color:var(--dim); letter-spacing:.06em; }
+
+/* ── LIVE RATES — ROLEX STYLE ── */
+#RATES { background:var(--bg2); border-bottom:1px solid var(--border); padding:4rem 2rem; }
+.rates-inner { max-width:1300px; margin:0 auto; }
+.rates-top { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:2.5rem; flex-wrap:wrap; gap:1rem; }
+.rates-head { font-family:var(--font-title); font-size:clamp(1.5rem,4vw,3rem); background:linear-gradient(135deg,var(--gold2),var(--gold)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.rates-updated { font-family:var(--font-ui); font-size:.38rem; letter-spacing:.28em; color:var(--dimmer); text-transform:uppercase; }
+.rates-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1px; background:var(--border); }
+.rate-card { background:var(--bg2); padding:2rem 1.5rem; text-align:center; position:relative; overflow:hidden; transition:background .4s; cursor:default; }
+.rate-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--gold),transparent); transform:scaleX(0); transition:transform .5s; }
+.rate-card:hover { background:var(--bg3); }
+.rate-card:hover::before { transform:scaleX(1); }
+.rate-metal { font-family:var(--font-ui); font-size:.38rem; letter-spacing:.35em; color:var(--rose); text-transform:uppercase; margin-bottom:.25rem; }
+.rate-karat { font-family:var(--font-title); font-size:.65rem; letter-spacing:.2em; color:var(--gold); margin-bottom:.8rem; }
+.rate-price { font-family:var(--font-title); font-size:clamp(1.2rem,2.5vw,1.7rem); background:linear-gradient(135deg,var(--gold2),var(--gold)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-weight:700; line-height:1; margin-bottom:.3rem; }
+.rate-unit { font-family:var(--font-ui); font-size:.35rem; letter-spacing:.2em; color:var(--dimmer); text-transform:uppercase; }
+
+/* ── VIDEO SECTION BANDS ── */
+.vid-band { position:relative; height:55vh; min-height:350px; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.vid-band video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:var(--hero-filter); }
+.vid-band-ov { position:absolute; inset:0; background:linear-gradient(135deg,rgba(3,2,2,.93),rgba(3,2,2,.35),rgba(3,2,2,.9)); }
+.vid-band-content { position:relative; z-index:2; text-align:center; padding:0 2rem; }
+.vid-band-quote { font-family:var(--font-display); font-size:clamp(1.2rem,3.5vw,2.4rem); font-style:italic; color:var(--text); line-height:1.45; max-width:780px; margin:0 auto; font-weight:300; opacity:0; transform:translateY(20px); transition:all 1.2s ease; }
+.vid-band-quote.vis { opacity:1; transform:translateY(0); }
+.vid-band-attr { font-family:var(--font-ui); font-size:.4rem; letter-spacing:.5em; color:var(--gold); text-transform:uppercase; margin-top:1.2rem; opacity:0; transition:all 1.2s ease .3s; }
+.vid-band-attr.vis { opacity:1; }
+
+/* ── COLLECTION SECTION ── */
+#COLLECTION { background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 50%,var(--bg) 100%); }
+.filters { display:flex; justify-content:center; gap:.5rem; padding:0 1.5rem 3rem; flex-wrap:wrap; }
+.ftab { background:transparent; border:1px solid var(--border); color:var(--dim); padding:.5rem 1.6rem; font-family:var(--font-ui); font-size:.44rem; letter-spacing:.28em; text-transform:uppercase; cursor:pointer; transition:all .3s; }
+.ftab.on, .ftab:hover { background:rgba(201,168,76,.06); border-color:var(--gold); color:var(--gold); }
+#PGRID { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,275px),1fr)); gap:1px; max-width:1450px; margin:0 auto; background:var(--border); padding-bottom:0; }
+/* Rolex-style product cards */
+.pcard { background:var(--bg2); cursor:pointer; transition:all .5s cubic-bezier(.16,1,.3,1); position:relative; overflow:hidden; }
+.pcard:hover { background:var(--bg3); transform:scale(1.01); z-index:2; box-shadow:0 0 60px rgba(0,0,0,.6), 0 0 30px rgba(201,168,76,.04); }
+/* Spotlight effect */
+.pcard-spot { position:absolute; inset:0; background:radial-gradient(circle 150px at 50% -20%,rgba(201,168,76,.07),transparent); opacity:0; transition:opacity .4s; pointer-events:none; z-index:5; }
+.pcard:hover .pcard-spot { opacity:1; }
+/* Sheen */
+.pcard::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,transparent 30%,rgba(255,255,255,.025) 50%,transparent 70%); transform:translateX(-100%); transition:transform .8s ease; z-index:6; pointer-events:none; }
+.pcard:hover::before { transform:translateX(100%); }
+.pc-img-wrap { position:relative; height:250px; background:var(--bg3); overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.pc-img { width:100%; height:100%; object-fit:cover; transition:transform .8s ease, filter .5s ease; filter:saturate(.7) brightness(.9); }
+.pcard:hover .pc-img { transform:scale(1.07); filter:saturate(1) brightness(1); }
+.pc-emoji { font-size:4.5rem; opacity:.15; transition:all .4s; }
+.pcard:hover .pc-emoji { opacity:.45; transform:scale(1.1); }
+.pc-badge { position:absolute; top:.85rem; left:.85rem; background:linear-gradient(135deg,var(--gold),var(--rose)); color:var(--bg); font-family:var(--font-ui); font-size:.35rem; font-weight:700; letter-spacing:.2em; padding:3px 9px; text-transform:uppercase; }
+.pc-cat-tag { position:absolute; top:.85rem; right:.85rem; font-family:var(--font-ui); font-size:.35rem; letter-spacing:.18em; color:var(--gold); text-transform:uppercase; background:rgba(3,2,2,.75); padding:3px 8px; border:1px solid var(--border); backdrop-filter:blur(10px); }
+.pc-body { padding:1.4rem 1.5rem; }
+.pc-metal { font-family:var(--font-ui); font-size:.37rem; letter-spacing:.22em; color:var(--rose); text-transform:uppercase; margin-bottom:.3rem; }
+.pc-name { font-family:var(--font-display); font-size:1.15rem; font-weight:400; color:var(--text); transition:color .3s; line-height:1.2; margin-bottom:.25rem; }
+.pcard:hover .pc-name { color:var(--gold); }
+.pc-weight { font-family:var(--font-ui); font-size:.36rem; letter-spacing:.14em; color:var(--dimmer); margin-bottom:.6rem; }
+.pc-desc { font-size:.82rem; color:var(--dim); line-height:1.55; margin-bottom:1rem; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.pc-foot { display:flex; justify-content:space-between; align-items:center; margin-bottom:.9rem; }
+.pc-price { font-family:var(--font-title); font-size:1rem; font-weight:600; color:var(--gold); }
+.pc-rating { font-family:var(--font-ui); font-size:.35rem; color:var(--dimmer); }
+.pc-btns { display:grid; grid-template-columns:1fr auto; gap:.4rem; }
+.pc-enquire { background:transparent; border:1px solid var(--border); color:var(--gold); padding:.7rem; font-family:var(--font-ui); font-size:.44rem; letter-spacing:.2em; text-transform:uppercase; cursor:pointer; transition:all .3s; }
+.pc-enquire:hover { background:linear-gradient(135deg,var(--gold),var(--rose)); color:var(--bg); border-color:transparent; }
+.pc-wa { background:#25D366; border:none; color:white; width:38px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:.9rem; transition:all .3s; }
+.pc-wa:hover { background:#1ea952; transform:scale(1.05); }
+.pc-grid-pad { grid-column:1/-1; height:4rem; background:var(--bg); }
+
+/* ── BRIDAL CINEMATIC ── */
+#BRIDAL { background:var(--bg2); padding:0; position:relative; overflow:hidden; }
+.bridal-inner { max-width:1450px; margin:0 auto; }
+.bridal-hero { position:relative; height:70vh; min-height:500px; overflow:hidden; cursor:pointer; }
+.bridal-hero video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:var(--hero-filter); transition:filter .6s; }
+.bridal-hero:hover video { filter:saturate(.7) contrast(1.1) brightness(.45); }
+.bridal-hero-ov { position:absolute; inset:0; background:linear-gradient(0deg,rgba(3,2,2,.97) 0%,rgba(3,2,2,.15) 55%,transparent 100%); }
+.bridal-hero-body { position:absolute; bottom:0; left:0; right:0; padding:3.5rem; }
+.bridal-hero-label { font-family:var(--font-ui); font-size:.45rem; letter-spacing:.55em; color:var(--rose); text-transform:uppercase; margin-bottom:.6rem; }
+.bridal-hero-title { font-family:var(--font-title); font-size:clamp(2rem,6vw,5rem); background:linear-gradient(135deg,var(--text),var(--gold)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:.9; }
+.bridal-hero-sub { font-family:var(--font-display); font-size:1.1rem; font-weight:300; font-style:italic; color:var(--dim); margin-top:.6rem; }
+.bridal-hero-arrow { position:absolute; top:2rem; right:2rem; width:44px; height:44px; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--gold); background:rgba(3,2,2,.6); backdrop-filter:blur(12px); transition:all .35s; }
+.bridal-hero:hover .bridal-hero-arrow { background:var(--gold); color:var(--bg); border-color:var(--gold); transform:rotate(45deg); }
+.bridal-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); }
+.bridal-card { position:relative; height:360px; overflow:hidden; cursor:pointer; }
+.bridal-card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:saturate(.65) brightness(.7); transition:all .6s ease; }
+.bridal-card:hover img { filter:saturate(.9) brightness(.55); transform:scale(1.05); }
+.bridal-card-ov { position:absolute; inset:0; background:linear-gradient(0deg,rgba(3,2,2,.96) 0%,rgba(3,2,2,.1) 60%,transparent 100%); }
+.bridal-card-body { position:absolute; bottom:0; left:0; right:0; padding:2rem; }
+.bridal-card-cat { font-family:var(--font-ui); font-size:.4rem; letter-spacing:.4em; color:var(--rose2); text-transform:uppercase; margin-bottom:.35rem; }
+.bridal-card-name { font-family:var(--font-title); font-size:clamp(1rem,2.5vw,1.8rem); background:linear-gradient(135deg,var(--text),var(--gold)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.bridal-card-price { font-family:var(--font-title); font-size:.9rem; color:var(--gold); margin-top:.3rem; }
+.bridal-book { text-align:center; padding:3.5rem; }
+
+/* ── GEMSTONE GALLERY ── */
+#GEMS { background:linear-gradient(180deg,var(--bg),var(--bg2)); }
+.gems-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; max-width:1200px; margin:0 auto; padding:0 1.5rem 5rem; }
+.gem-card { position:relative; border:1px solid var(--border); overflow:hidden; cursor:pointer; transition:all .4s; aspect-ratio:3/4; background:var(--bg3); display:flex; align-items:flex-end; }
+.gem-card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:saturate(.6) brightness(.75); transition:all .6s; }
+.gem-card:hover img { filter:saturate(1.1) brightness(.6); transform:scale(1.06); }
+.gem-card:hover { border-color:var(--gold); }
+.gem-ov { position:absolute; inset:0; background:linear-gradient(0deg,rgba(3,2,2,.95) 0%,transparent 55%); }
+.gem-body { position:relative; z-index:2; padding:1.5rem; }
+.gem-type { font-family:var(--font-ui); font-size:.38rem; letter-spacing:.38em; text-transform:uppercase; margin-bottom:.25rem; }
+.gem-type.ruby { color:#CC2244; }
+.gem-type.emerald { color:#2A9D5C; }
+.gem-type.sapphire { color:#4488DD; }
+.gem-type.diamond { color:#B8C8E8; }
+.gem-name { font-family:var(--font-title); font-size:1.1rem; color:var(--text); transition:color .3s; }
+.gem-card:hover .gem-name { color:var(--gold); }
+.gem-price { font-family:var(--font-title); font-size:.85rem; color:var(--gold); margin-top:.25rem; }
+
+/* ── CRAFTING STORY ── */
+#CRAFTING { position:relative; padding:6rem 2rem; background:var(--bg2); overflow:hidden; }
+.craft-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+.craft-vid-wrap { position:relative; aspect-ratio:9/16; max-height:600px; overflow:hidden; border:1px solid var(--border); }
+.craft-vid-wrap video { width:100%; height:100%; object-fit:cover; filter:var(--hero-filter); }
+.craft-vid-overlay { position:absolute; inset:0; background:linear-gradient(135deg,rgba(3,2,2,.3),transparent,rgba(3,2,2,.3)); }
+.craft-text { }
+.craft-ornament { display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem; }
+.craft-orn-line { width:40px; height:1px; background:linear-gradient(90deg,var(--gold),transparent); }
+.craft-orn-sym { font-family:var(--font-ui); font-size:.45rem; letter-spacing:.35em; color:var(--gold); text-transform:uppercase; }
+.craft-title { font-family:var(--font-title); font-size:clamp(1.8rem,5vw,4rem); background:linear-gradient(135deg,var(--text),var(--gold)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:.9; margin-bottom:1.5rem; }
+.craft-body { font-family:var(--font-display); font-size:1.1rem; font-weight:300; font-style:italic; color:var(--dim); line-height:1.9; margin-bottom:2rem; }
+.craft-stats { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:2.5rem; }
+.craft-stat { border-left:2px solid var(--border); padding-left:1rem; }
+.craft-stat-n { font-family:var(--font-title); font-size:2rem; background:linear-gradient(135deg,var(--gold2),var(--gold)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.craft-stat-l { font-family:var(--font-ui); font-size:.38rem; letter-spacing:.2em; color:var(--dimmer); text-transform:uppercase; margin-top:3px; }
+
+/* ── TESTIMONIALS — ROLEX SINGLE QUOTE STYLE ── */
+#TESTI { background:var(--bg); padding:6rem 2rem; overflow:hidden; position:relative; }
+.testi-quote-wrap { max-width:800px; margin:0 auto; text-align:center; position:relative; min-height:200px; }
+.testi-quote { font-family:var(--font-display); font-size:clamp(1.2rem,3vw,2rem); font-style:italic; font-weight:300; color:var(--text); line-height:1.55; opacity:0; transition:all 1s ease; position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; pointer-events:none; }
+.testi-quote.vis { opacity:1; position:relative; pointer-events:auto; }
+.testi-q-mark { font-size:4rem; color:rgba(201,168,76,.15); font-family:serif; line-height:.6; display:block; margin-bottom:1rem; }
+.testi-author { font-family:var(--font-ui); font-size:.42rem; letter-spacing:.35em; color:var(--gold); text-transform:uppercase; margin-top:1.5rem; display:flex; align-items:center; gap:.8rem; justify-content:center; }
+.testi-author::before,.testi-author::after { content:''; width:30px; height:1px; background:linear-gradient(90deg,transparent,var(--gold)); }
+.testi-author::after { transform:scaleX(-1); }
+.testi-dots { display:flex; justify-content:center; gap:.6rem; margin-top:2.5rem; }
+.testi-dot { width:5px; height:5px; border-radius:50%; background:var(--border); cursor:pointer; transition:all .3s; }
+.testi-dot.on { background:var(--gold); transform:scale(1.4); }
+
+/* ── NOOR SALES MANAGER ── */
+#NOOR { position:fixed; bottom:0; left:0; right:0; z-index:900; height:88vh; background:var(--bg); border-top:1px solid var(--border); transform:translateY(100%); transition:transform .55s cubic-bezier(.16,1,.3,1); display:flex; flex-direction:column; box-shadow:0 -25px 80px rgba(0,0,0,.7); }
+#NOOR.on { transform:translateY(0); }
+.noor-hd { display:flex; align-items:center; gap:1rem; padding:1.3rem 1.6rem; border-bottom:1px solid var(--border); background:var(--bg2); flex-shrink:0; }
+.noor-av { width:48px; height:48px; border-radius:50%; border:1px solid var(--gold); background:linear-gradient(135deg,var(--bg3),var(--bg4)); display:flex; align-items:center; justify-content:center; font-size:1.5rem; flex-shrink:0; box-shadow:0 0 18px rgba(201,168,76,.15); }
+.noor-info { flex:1; }
+.noor-name { font-family:var(--font-title); font-size:.95rem; letter-spacing:.2em; background:linear-gradient(135deg,var(--gold),var(--rose)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.noor-role { font-family:var(--font-ui); font-size:.38rem; letter-spacing:.22em; color:var(--dim); text-transform:uppercase; margin-top:2px; }
+.noor-online { font-family:var(--font-ui); font-size:.36rem; letter-spacing:.15em; color:#4ade80; display:flex; align-items:center; gap:4px; margin-top:2px; }
+.noor-ndot { width:5px; height:5px; background:#4ade80; border-radius:50%; animation:dotPulse 2s infinite; }
+.noor-x { background:transparent; border:1px solid var(--border); color:var(--dim); width:34px; height:34px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all .3s; flex-shrink:0; }
+.noor-x:hover { border-color:var(--gold); color:var(--gold); }
+.noor-chips { display:flex; gap:.4rem; padding:.8rem 1.5rem; overflow-x:auto; border-bottom:1px solid var(--border); flex-shrink:0; scrollbar-width:none; }
+.noor-chips::-webkit-scrollbar { display:none; }
+.chip { background:rgba(201,168,76,.04); border:1px solid var(--border); color:var(--dim); padding:.4rem 1rem; font-family:var(--font-ui); font-size:.42rem; letter-spacing:.15em; text-transform:uppercase; cursor:pointer; white-space:nowrap; transition:all .25s; flex-shrink:0; }
+.chip:hover { border-color:var(--gold); color:var(--gold); background:rgba(201,168,76,.07); }
+#NMSGS { flex:1; overflow-y:auto; padding:1.5rem; display:flex; flex-direction:column; gap:1rem; scroll-behavior:smooth; }
+#NMSGS::-webkit-scrollbar { width:2px; }
+#NMSGS::-webkit-scrollbar-thumb { background:var(--border); }
+.msg { display:flex; flex-direction:column; gap:3px; max-width:85%; }
+.msg-ai { align-self:flex-start; }
+.msg-user { align-self:flex-end; }
+.msg-b { padding:.85rem 1.1rem; font-family:var(--font-body); font-size:.9rem; line-height:1.65; }
+.msg-ai .msg-b { background:var(--bg2); border:1px solid var(--border); border-radius:0 10px 10px 10px; color:var(--text); }
+.msg-user .msg-b { background:linear-gradient(135deg,rgba(201,168,76,.12),rgba(201,168,76,.04)); border:1px solid rgba(201,168,76,.18); border-radius:10px 0 10px 10px; color:var(--text); }
+.msg-time { font-family:var(--font-ui); font-size:.35rem; letter-spacing:.12em; color:var(--dimmer); text-transform:uppercase; padding:0 3px; }
+.typing { display:flex; gap:5px; align-items:center; padding:.85rem 1.1rem; background:var(--bg2); border:1px solid var(--border); border-radius:0 10px 10px 10px; width:fit-content; }
+.tdot { width:6px; height:6px; background:var(--gold); border-radius:50%; animation:typBounce 1.2s ease-in-out infinite; }
+.tdot:nth-child(2){animation-delay:.18s;background:var(--rose)}
+.tdot:nth-child(3){animation-delay:.36s}
+@keyframes typBounce { 0%,80%,100%{transform:scale(.75);opacity:.4} 40%{transform:scale(1.2);opacity:1} }
+.noor-input-wrap { display:flex; gap:.5rem; padding:1rem 1.5rem; border-top:1px solid var(--border); background:var(--bg2); flex-shrink:0; }
+.noor-input-wrap input { flex:1; background:var(--bg3); border:1px solid var(--border); color:var(--text); padding:.85rem 1rem; font-family:var(--font-body); font-size:.88rem; outline:none; transition:border-color .3s; }
+.noor-input-wrap input:focus { border-color:var(--gold); }
+.noor-input-wrap input::placeholder { color:var(--dimmer); font-style:italic; }
+.noor-send { background:linear-gradient(135deg,var(--gold),var(--rose)); border:none; color:var(--bg); width:46px; height:46px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:.9rem; transition:filter .3s; flex-shrink:0; }
+.noor-send:hover { filter:brightness(1.1); }
+
+/* ── DRAWER ── */
+#DRAWER { position:fixed; right:0; top:0; bottom:0; width:min(440px,100vw); z-index:950; background:var(--bg); border-left:1px solid var(--border); transform:translateX(100%); transition:transform .5s cubic-bezier(.16,1,.3,1); overflow-y:auto; display:flex; flex-direction:column; box-shadow:-25px 0 80px rgba(0,0,0,.6); }
+#DRAWER.on { transform:translateX(0); }
+.drw-topbar { height:3px; background:linear-gradient(90deg,var(--gold),var(--rose),var(--gold)); flex-shrink:0; }
+.drw-x { position:absolute; top:1rem; right:1rem; background:transparent; border:1px solid var(--border); color:var(--dim); width:34px; height:34px; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:1; transition:all .3s; }
+.drw-x:hover { border-color:var(--gold); color:var(--gold); }
+.drw-body { padding:1.5rem; flex:1; }
+.drw-img { width:100%; height:320px; object-fit:cover; display:block; filter:saturate(.8); transition:filter .4s; margin-bottom:1.2rem; }
+.drw-img:hover { filter:saturate(1.1); }
+.drw-metal { font-family:var(--font-ui); font-size:.38rem; letter-spacing:.3em; color:var(--rose); text-transform:uppercase; margin-bottom:.25rem; }
+.drw-cat { font-family:var(--font-ui); font-size:.38rem; letter-spacing:.25em; color:var(--dimmer); text-transform:uppercase; margin-bottom:.5rem; }
+.drw-name { font-family:var(--font-title); font-size:1.8rem; line-height:1; background:linear-gradient(135deg,var(--text),var(--gold)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:.3rem; }
+.drw-weight { font-family:var(--font-ui); font-size:.38rem; letter-spacing:.15em; color:var(--dimmer); margin-bottom:.5rem; }
+.drw-stars { color:var(--gold); font-size:.6rem; letter-spacing:2px; margin-bottom:.9rem; }
+.drw-desc { font-family:var(--font-display); font-size:1rem; font-weight:300; font-style:italic; color:var(--dim); line-height:1.75; border-left:1.5px solid var(--border); padding-left:1rem; margin-bottom:1.3rem; }
+.drw-price { font-family:var(--font-title); font-size:2rem; color:var(--gold); margin-bottom:.3rem; }
+.drw-note { font-family:var(--font-ui); font-size:.34rem; letter-spacing:.15em; color:var(--dimmer); text-transform:uppercase; margin-bottom:1.4rem; }
+.drw-btns { display:grid; grid-template-columns:1fr auto; gap:.5rem; }
+.drw-enq { background:linear-gradient(135deg,var(--gold),var(--rose)); color:var(--bg); border:none; padding:1rem; font-family:var(--font-ui); font-size:.55rem; font-weight:700; letter-spacing:.35em; text-transform:uppercase; cursor:pointer; clip-path:var(--clip); transition:filter .3s; }
+.drw-enq:hover { filter:brightness(1.1); }
+.drw-wa { background:#25D366; border:none; color:white; width:50px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.3rem; transition:all .3s; }
+.drw-wa:hover { background:#1ea952; transform:scale(1.05); }
+
+/* ── FLOATS ── */
+#FLOATS { position:fixed; bottom:2rem; right:1.2rem; display:none; flex-direction:column; gap:.6rem; z-index:600; }
+.fb { width:52px; height:52px; border-radius:50%; border:none; cursor:pointer; font-size:1.3rem; display:flex; align-items:center; justify-content:center; transition:all .35s; box-shadow:0 4px 20px rgba(0,0,0,.5); position:relative; }
+.fb:hover { transform:scale(1.12) translateY(-3px); }
+.fb-ai { background:linear-gradient(135deg,var(--gold),var(--gold3)); }
+.fb-wa { background:#25D366; }
+.fb-badge { position:absolute; top:-4px; right:-4px; width:16px; height:16px; background:var(--rose); color:white; border-radius:50%; font-size:.38rem; font-family:var(--font-ui); display:flex; align-items:center; justify-content:center; font-weight:700; animation:badgePop .4s .8s both; }
+@keyframes badgePop { from{transform:scale(0)} to{transform:scale(1)} }
+
+/* ── AUDIO PLAYER ── */
+#AUDIO { position:fixed; bottom:0; left:50%; transform:translateX(-50%); z-index:600; }
+.audio-pill { display:flex; align-items:center; gap:.8rem; background:rgba(5,3,2,.97); border:1px solid var(--border); border-bottom:none; padding:.55rem 1.4rem; cursor:pointer; backdrop-filter:blur(25px); border-radius:10px 10px 0 0; transition:all .3s; }
+.audio-pill:hover { border-color:var(--gold); }
+.audio-bars { display:flex; gap:3px; align-items:center; height:14px; }
+.audio-bar { width:3px; background:var(--gold); border-radius:2px; animation:barAnim 1.2s ease-in-out infinite; transform-origin:bottom; }
+.audio-bar:nth-child(1){height:6px;animation-delay:0s}
+.audio-bar:nth-child(2){height:10px;animation-delay:.15s}
+.audio-bar:nth-child(3){height:14px;animation-delay:.3s}
+.audio-bar:nth-child(4){height:8px;animation-delay:.45s}
+.audio-bar:nth-child(5){height:5px;animation-delay:.6s}
+#AUDIO:not(.playing) .audio-bar { animation:none; height:3px; }
+@keyframes barAnim { 0%,100%{transform:scaleY(.35)} 50%{transform:scaleY(1)} }
+.audio-label { font-family:var(--font-ui); font-size:.45rem; letter-spacing:.3em; color:var(--dim); text-transform:uppercase; white-space:nowrap; }
+.audio-arr { font-size:.55rem; color:var(--dim); transition:transform .3s; }
+#AUDIO.aopen .audio-arr { transform:rotate(180deg); }
+.audio-panel { background:rgba(5,3,2,.98); border:1px solid var(--border); width:min(320px,94vw); padding:1.2rem; display:none; backdrop-filter:blur(25px); border-radius:10px 10px 0 0; }
+#AUDIO.aopen .audio-panel { display:block; }
+.ap-title { font-family:var(--font-title); font-size:.85rem; letter-spacing:.2em; background:linear-gradient(135deg,var(--gold),var(--rose)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:1rem; }
+.ap-tracks { display:flex; flex-direction:column; gap:.3rem; margin-bottom:1rem; }
+.ap-track { display:flex; align-items:center; gap:.7rem; padding:.5rem .75rem; cursor:pointer; border:1px solid transparent; transition:all .3s; }
+.ap-track:hover, .ap-track.on { background:rgba(201,168,76,.05); border-color:var(--border); }
+.ap-track-icon { font-size:1.1rem; }
+.ap-track-name { font-family:var(--font-body); font-size:.88rem; font-weight:600; color:var(--text); flex:1; }
+.ap-track-type { font-family:var(--font-ui); font-size:.35rem; letter-spacing:.15em; color:var(--dimmer); text-transform:uppercase; }
+.ap-ind { width:7px; height:7px; border-radius:50%; background:transparent; transition:all .3s; }
+.ap-track.on .ap-ind { background:var(--gold); box-shadow:0 0 7px var(--gold); }
+.ap-controls { display:flex; justify-content:center; gap:.5rem; margin-bottom:.8rem; }
+.ap-ctrl { background:transparent; border:1px solid var(--border); color:var(--gold); width:34px; height:34px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:.82rem; transition:all .3s; }
+.ap-ctrl:hover { border-color:var(--gold); background:rgba(201,168,76,.08); }
+.ap-vol { display:flex; align-items:center; gap:.7rem; }
+.ap-vol-icon { cursor:pointer; font-size:.9rem; transition:transform .2s; }
+.ap-vol-icon:hover { transform:scale(1.15); }
+.ap-vol-range { flex:1; -webkit-appearance:none; height:2px; background:var(--bg4); outline:none; cursor:pointer; }
+.ap-vol-range::-webkit-slider-thumb { -webkit-appearance:none; width:11px; height:11px; border-radius:50%; background:var(--gold); cursor:pointer; }
+.ap-vol-val { font-family:var(--font-ui); font-size:.42rem; color:var(--dimmer); width:28px; text-align:right; }
+
+/* ── FOOTER ── */
+footer { background:var(--bg2); border-top:1px solid var(--border); padding:5.5rem 2.5rem 2.5rem; }
+.foot-ornament { text-align:center; margin-bottom:4rem; }
+.foot-crown { font-size:2.5rem; display:block; margin-bottom:.5rem; filter:drop-shadow(0 0 12px rgba(201,168,76,.3)); }
+.foot-brand { font-family:var(--font-title); font-size:3rem; letter-spacing:.28em; background:linear-gradient(135deg,var(--gold2),var(--gold),var(--rose)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.foot-tagline { font-family:var(--font-display); font-size:1rem; font-style:italic; color:var(--dimmer); margin-top:.3rem; letter-spacing:.08em; }
+.foot-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; max-width:1200px; margin:0 auto 3.5rem; }
+.foot-col-title { font-family:var(--font-ui); font-size:.42rem; letter-spacing:.5em; color:var(--gold); text-transform:uppercase; margin-bottom:1.4rem; padding-bottom:.5rem; border-bottom:1px solid var(--border); }
+.foot-contact a { display:flex; align-items:center; gap:.5rem; font-family:var(--font-body); font-size:.9rem; color:var(--dim); text-decoration:none; margin-bottom:.5rem; transition:color .3s; }
+.foot-contact a:hover { color:var(--gold); }
+.foot-link { font-family:var(--font-body); font-size:.9rem; color:var(--dim); cursor:pointer; display:block; margin-bottom:.5rem; transition:all .3s; }
+.foot-link:hover { color:var(--gold); padding-left:5px; }
+.foot-rate-mini { font-family:var(--font-ui); font-size:.38rem; letter-spacing:.18em; color:var(--dimmer); margin-bottom:.3rem; text-transform:uppercase; }
+.foot-rate-mini span { color:var(--gold); }
+.foot-bot { border-top:1px solid var(--border); padding-top:2rem; max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+.foot-copy { font-family:var(--font-ui); font-size:.35rem; letter-spacing:.25em; color:rgba(245,238,230,.12); text-transform:uppercase; }
+.foot-cert { font-family:var(--font-ui); font-size:.35rem; letter-spacing:.18em; color:rgba(201,168,76,.25); text-transform:uppercase; }
+
+/* ── TOAST / LOAD ── */
+.toast { position:fixed; top:5.5rem; left:50%; transform:translateX(-50%); z-index:9500; background:rgba(4,3,2,.98); border:1px solid var(--border); color:var(--gold); font-family:var(--font-ui); font-size:.48rem; letter-spacing:.28em; padding:.7rem 1.8rem; text-transform:uppercase; white-space:nowrap; pointer-events:none; clip-path:var(--clip); animation:tIn .3s ease,tOut .3s ease 2.7s forwards; }
+@keyframes tIn { from{opacity:0;transform:translateX(-50%) translateY(-10px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
+@keyframes tOut { from{opacity:1} to{opacity:0} }
+#LOAD { position:fixed; inset:0; z-index:6000; background:var(--bg); display:none; flex-direction:column; align-items:center; justify-content:center; gap:1.5rem; }
+#LOAD.on { display:flex; }
+.load-ring { width:58px; height:58px; position:relative; }
+.load-ring::before,.load-ring::after { content:''; position:absolute; border-radius:50%; inset:0; }
+.load-ring::before { border:1.5px solid var(--border); }
+.load-ring::after { border:1.5px solid transparent; border-top-color:var(--gold); border-right-color:var(--rose); animation:spin .85s linear infinite; }
+@keyframes spin { to{transform:rotate(360deg)} }
+.load-txt { font-family:var(--font-ui); font-size:.48rem; letter-spacing:.5em; color:var(--dimmer); text-transform:uppercase; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){.foot-grid{grid-template-columns:1fr 1fr;gap:2rem}}
+@media(max-width:768px){
+  .nav-links{display:none}
+  #PGRID{grid-template-columns:1fr 1fr}
+  .craft-inner{grid-template-columns:1fr}
+  .bridal-grid{grid-template-columns:1fr}
+  .gems-grid{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr;gap:2rem}
+  #THEME-SW{top:auto;bottom:10rem}
+  .rates-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:480px){
+  #PGRID{grid-template-columns:1fr}
+  .h-btns{flex-direction:column;align-items:center}
+  .gems-grid{grid-template-columns:1fr}
+  .sp-stats{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body data-theme="royal-dark" data-lang="en">
+
+<!-- ── FIXED LAYERS ── -->
+<div id="NOISE"></div>
+<canvas id="PCVS"></canvas>
+<div id="SPOT"></div>
+<div id="CUR"></div>
+<div id="CURR"></div>
+<div id="CTRAIL"></div>
+<div id="VIGNETTE"></div>
+<div id="REFRACTION">
+  <div class="refr-ray" style="--r:-15deg"></div>
+  <div class="refr-ray" style="--r:-8deg"></div>
+  <div class="refr-ray" style="--r:-22deg"></div>
+  <div class="refr-ray" style="--r:5deg"></div>
+  <div class="refr-ray" style="--r:-30deg"></div>
+</div>
+<div id="LOAD"><div class="load-ring"></div><div class="load-txt" id="LOADT">Loading</div></div>
+
+<!-- ── LIVE RATES TICKER ── -->
+<div id="TICKER"><div class="tick-track" id="TTRACK"></div></div>
+
+<!-- ── THEME SWITCHER ── -->
+<div id="THEME-SW">
+  <button class="th-btn th-royal on" data-tip="Royal Dark"   onclick="setTheme('royal-dark')">👑</button>
+  <button class="th-btn th-rose"     data-tip="Rose Gold"    onclick="setTheme('rose-gold')">🌹</button>
+  <button class="th-btn th-diam"     data-tip="Diamond White" onclick="setTheme('diamond')">💎</button>
+</div>
+
+<!-- ── LANGUAGE SWITCHER ── -->
+<div id="LANG-SW">
+  <button class="lg-btn on"  data-lang="en" onclick="setLang('en')">EN</button>
+  <button class="lg-btn"     data-lang="ur" onclick="setLang('ur')">UR</button>
+  <button class="lg-btn"     data-lang="ar" onclick="setLang('ar')">AR</button>
+</div>
+
+<!-- ═══════════ AUTH ═══════════ -->
+<div id="AUTH">
+  <video class="auth-vid" src="https://brzztousmxsbwuyfdovm.supabase.co/storage/v1/object/public/madni%20jewellers.pro/jewellery%201.mp4" autoplay muted loop playsinline></video>
+  <div class="auth-ov"></div>
+  <div class="auth-brk tl"></div><div class="auth-brk tr"></div>
+  <div class="auth-brk bl"></div><div class="auth-brk br"></div>
+  <div id="AUTH-PARTICLES"></div>
+  <div class="auth-box">
+    <div class="auth-topline"></div>
+    <span class="auth-crown">👑</span>
+    <div class="auth-logo-text">MADNI</div>
+    <div class="auth-jewellers">J E W E L L E R S</div>
+    <div class="auth-tagline">Where Legacy Shines · جہاں وراثت چمکتی ہے</div>
+    <div class="auth-ornament">
+      <div class="auth-orn-line"></div>
+      <div class="auth-orn-sym">✦ ✦ ✦</div>
+      <div class="auth-orn-line r"></div>
+    </div>
+    <input id="AUTH-NAME"  type="text" class="auth-inp" placeholder="Full Name · پورا نام" onkeydown="authKey(event)"/>
+    <input id="AUTH-PHONE" type="tel"  class="auth-inp" placeholder="Phone · 03001234567"   onkeydown="authKey(event)"/>
+    <div id="AUTH-ERR" class="auth-err"></div>
+    <button class="auth-btn" onclick="handleAuth()">Enter The Collection &rarr;</button>
+    <div class="auth-foot">madnijewellers.com &middot; Gujrat, Pakistan &middot; All Rights Reserved</div>
+  </div>
+</div>
+
+<!-- ═══════════ SPLASH ═══════════ -->
+<div id="SPLASH">
+  <video class="sp-vid" src="https://brzztousmxsbwuyfdovm.supabase.co/storage/v1/object/public/madni%20jewellers.pro/jewellery%201.mp4" autoplay muted loop playsinline></video>
+  <div class="sp-ov"></div>
+  <div class="sp-arch"></div>
+  <div class="sp-lines"><div class="sp-line"></div><div class="sp-line"></div><div class="sp-line"></div></div>
+  <div class="sp-c">
+    <div class="sp-pre">Gujrat's Finest Jewellery House</div>
+    <span class="sp-crown">👑</span>
+    <div class="sp-title">
+      <span class="sp-letter">M</span><span class="sp-letter">A</span><span class="sp-letter">D</span><span class="sp-letter">N</span><span class="sp-letter">I</span>
+    </div>
+    <div class="sp-jewellers">J E W E L L E R S</div>
+    <div class="sp-tagline">Where Legacy Shines</div>
+    <div class="sp-orn">
+      <div class="sp-orn-line"></div>
+      <div class="sp-orn-sym">✦ &nbsp; ✦ &nbsp; ✦</div>
+      <div class="sp-orn-line r"></div>
+    </div>
+    <button class="sp-enter" onclick="enterSite()">Enter The Collection</button>
+  </div>
+  <div class="sp-stats">
+    <div><div class="sp-sn" data-target="40">0</div><div class="sp-sl">Years Legacy</div></div>
+    <div><div class="sp-sn" data-target="5000">0</div><div class="sp-sl">Families Served</div></div>
+    <div><div class="sp-sn" data-target="38">0</div><div class="sp-sl">Collections</div></div>
+    <div><div class="sp-sn" data-target="100">0</div><div class="sp-sl">% Hallmarked</div></div>
+  </div>
+</div>
+
+<!-- ═══════════ SITE ═══════════ -->
+<div id="SITE">
+
+  <!-- NAV -->
+  <nav id="NAV">
+    <div class="nav-brand" onclick="window.scrollTo(0,0)">
+      <span class="nav-crown-icon">👑</span>
+      <div class="nav-name">MADNI JEWELLERS</div>
+    </div>
+    <ul class="nav-links">
+      <li><a onclick="filterP('GOLD',null)">Gold</a></li>
+      <li><a onclick="filterP('DIAMOND',null)">Diamonds</a></li>
+      <li><a onclick="filterP('GEMSTONE',null)">Gemstones</a></li>
+      <li><a onclick="scrollTo2('BRIDAL')">Bridal</a></li>
+      <li><a onclick="scrollTo2('RATES')">Live Rates</a></li>
+      <li><a onclick="scrollTo2('CRAFTING')">Our Story</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-rate-pill">24K · PKR 44,839/g</div>
+      <button class="nav-btn" onclick="openNoor()">💎 Consult</button>
+      <button class="nav-btn nav-cta" onclick="openWA()">WhatsApp</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="HERO">
+    <video id="H-VID" src="https://brzztousmxsbwuyfdovm.supabase.co/storage/v1/object/public/madni%20jewellers.pro/jewellery%201.mp4" autoplay muted loop playsinline></video>
+    <div class="h-ov"></div>
+    <div class="h-grid"></div>
+    <div class="h-sweep"></div>
+    <div class="h-c">
+      <div class="h-badge"><span class="h-bdot"></span>Gujrat's Most Prestigious Jewellers</div>
+      <span class="h-crown">👑</span>
+      <h1 class="h-title">
+        <span class="h-t1">WHERE LEGACY</span>
+        <span class="h-t2">SHINES</span>
+      </h1>
+      <div class="h-jewellers">MADNI JEWELLERS · EST. GUJRAT · PAKISTAN</div>
+      <p class="h-desc">Crafting heirlooms for generations.<br>Gold · Diamonds · Gemstones · Bridal Collections.</p>
+      <div class="h-btns">
+        <button class="btn-primary" onclick="scrollTo2('COLLECTION')">Explore Collection</button>
+        <button class="btn-secondary" onclick="scrollTo2('BRIDAL')">Bridal Showcase →</button>
+      </div>
+    </div>
+    <div class="h-scroll" onclick="scrollTo2('RATES')">
+      <span class="h-scroll-txt">Scroll</span>
+      <div class="h-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marq-wrap"><div class="marq-track" id="MTRACK"></div></div>
+
+  <!-- LIVE RATES -->
+  <section id="RATES">
+    <div class="rates-inner">
+      <div class="rates-top">
+        <div>
+          <div class="sec-ornament" style="justify-content:flex-start;margin-bottom:.5rem">
+            <div class="sec-orn-line"></div>
+            <div class="sec-orn-sym">Pakistan Sarafa Market</div>
+          </div>
+          <div class="rates-head">LIVE GOLD RATES</div>
+        </div>
+        <div class="rates-updated">Updated: 21 March 2026 · Rates change daily</div>
+      </div>
+      <div class="rates-grid" id="RGRID"></div>
+    </div>
+  </section>
+
+  <!-- VIDEO BAND 1 -->
+  <div class="vid-band" id="VB1">
+    <video src="https://brzztousmxsbwuyfdovm.supabase.co/storage/v1/object/public/madni%20jewellers.pro/jewellery%201.mp4" autoplay muted loop playsinline></video>
+    <div class="vid-band-ov"></div>
+    <div class="vid-band-content">
+      <div class="vid-band-quote" id="VBQ1">"Gold is not just precious. It is the language of love across every culture on earth."</div>
+      <div class="vid-band-attr" id="VBA1">Madni Jewellers · Est. Gujrat</div>
+    </div>
+  </div>
+
+  <!-- COLLECTION -->
+  <section id="COLLECTION">
+    <div class="sec-hd">
+      <div class="sec-ornament">
+        <div class="sec-orn-line"></div>
+        <div class="sec-orn-sym">Handcrafted Elegance</div>
+        <div class="sec-orn-line r"></div>
+      </div>
+      <div class="sec-title">OUR COLLECTION</div>
+      <div class="sec-sub">Every piece a testament to enduring craftsmanship</div>
+    </div>
+    <div class="filters">
+      <button class="ftab on" onclick="filterP('ALL',this)">All Pieces</button>
+      <button class="ftab"    onclick="filterP('GOLD',this)">Gold</button>
+      <button class="ftab"    onclick="filterP('DIAMOND',this)">Diamonds</button>
+      <button class="ftab"    onclick="filterP('GEMSTONE',this)">Gemstones</button>
+      <button class="ftab"    onclick="filterP('BRIDAL',this)">Bridal</button>
+      <button class="ftab"    onclick="filterP('SILVER',this)">Silver</button>
+    </div>
+    <div id="PGRID"></div>
+  </section>
+
+  <!-- VIDEO BAND 2 -->
+  <div class="vid-band" id="VB2">
+    <video src="https://brzztousmxsbwuyfdovm.supabase.co/storage/v1/object/public/madni%20jewellers.pro/jewellery%202.mp4" autoplay muted loop playsinline></video>
+    <div class="vid-band-ov"></div>
+    <div class="vid-band-content">
+      <div class="vid-band-quote" id="VBQ2">"A diamond is a piece of charcoal that handled stress exceptionally well."</div>
+      <div class="vid-band-attr" id="VBA2">Diamond Collection · Madni Jewellers</div>
+    </div>
+  </div>
+
+  <!-- BRIDAL SHOWCASE -->
+  <section id="BRIDAL">
+    <div class="sec-hd">
+      <div class="sec-ornament">
+        <div class="sec-orn-line"></div>
+        <div class="sec-orn-sym">For Your Most Sacred Day</div>
+        <div class="sec-orn-line r"></div>
+      </div>
+      <div class="sec-title">BRIDAL SHOWCASE</div>
+      <div class="sec-sub">Complete bridal sets crafted with devotion and artistry</div>
+    </div>
+    <div class="bridal-inner">
+      <!-- Hero bridal video -->
+      <div class="bridal-hero" onclick="openDrawer(29)">
+        <video src="https://brzztousmxsbwuyfdovm.supabase.co/storage/v1/object/public/madni%20jewellers.pro/jewellery%202.mp4" autoplay muted loop playsinline></video>
+        <div class="bridal-hero-ov"></div>
+        <div class="bridal-hero-arrow">→</div>
+        <div class="bridal-hero-body">
+          <div class="bridal-hero-label">Signature Collection</div>
+          <div class="bridal-hero-title">MAHARANI<br>BRIDAL SET</div>
+          <div class="bridal-hero-sub">22K Gold · 120g · Complete 8-piece set</div>
+        </div>
+      </div>
+      <!-- Bridal image grid -->
+      <div class="bridal-grid" id="BGRID"></div>
+    </div>
+    <div class="bridal-book">
+      <button class="btn-primary" onclick="openWA('bridal')">Book Bridal Consultation</button>
+    </div>
+  </section>
+
+  <!-- GEMSTONE GALLERY -->
+  <section id="GEMS">
+    <div class="sec-hd">
+      <div class="sec-ornament">
+        <div class="sec-orn-line"></div>
+        <div class="sec-orn-sym">Earth's Finest</div>
+        <div class="sec-orn-line r"></div>
+      </div>
+      <div class="sec-title">GEMSTONE VAULT</div>
+      <div class="sec-sub">Natural rubies, emeralds and sapphires — many certified</div>
+    </div>
+    <div class="gems-grid" id="GGRID"></div>
+  </section>
+
+  <!-- CRAFTING STORY -->
+  <section id="CRAFTING">
+    <div class="craft-inner">
+      <div class="craft-vid-wrap">
+        <video src="https://brzztousmxsbwuyfdovm.supabase.co/storage/v1/object/public/madni%20jewellers.pro/jewellery%201.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;filter:var(--hero-filter)"></video>
+        <div class="craft-vid-overlay"></div>
+      </div>
+      <div class="craft-text">
+        <div class="craft-ornament">
+          <div class="craft-orn-line"></div>
+          <div class="craft-orn-sym">Our Heritage</div>
+        </div>
+        <div class="craft-title">CRAFTED WITH<br>DEVOTION</div>
+        <div class="craft-body">For decades, Madni Jewellers has been the most trusted name in Gujrat. Every piece that leaves our atelier carries the weight of tradition and the precision of master craftsmen. We do not simply sell jewellery — we create legacies.</div>
+        <div class="craft-stats">
+          <div class="craft-stat"><div class="craft-stat-n">40+</div><div class="craft-stat-l">Years of Legacy</div></div>
+          <div class="craft-stat"><div class="craft-stat-n">5000+</div><div class="craft-stat-l">Families Served</div></div>
+          <div class="craft-stat"><div class="craft-stat-n">100%</div><div class="craft-stat-l">Hallmarked Gold</div></div>
+          <div class="craft-stat"><div class="craft-stat-n">GIA</div><div class="craft-stat-l">Certified Diamonds</div></div>
+        </div>
+        <button class="btn-primary" onclick="openWA()">Speak With Our Team</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="TESTI">
+    <div class="sec-hd" style="padding-bottom:2rem">
+      <div class="sec-ornament">
+        <div class="sec-orn-line"></div>
+        <div class="sec-orn-sym">Our Families</div>
+        <div class="sec-orn-line r"></div>
+      </div>
+      <div class="sec-title">TRUSTED FOR GENERATIONS</div>
+    </div>
+    <div class="testi-quote-wrap" id="TQWRAP"></div>
+    <div class="testi-dots" id="TDOTS"></div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-ornament">
+      <span class="foot-crown">👑</span>
+      <div class="foot-brand">MADNI JEWELLERS</div>
+      <div class="foot-tagline">Where Legacy Shines · جہاں وراثت چمکتی ہے</div>
+    </div>
+    <div class="foot-grid">
+      <div>
+        <div class="foot-col-title">Contact</div>
+        <div class="foot-contact">
+          <a href="https://wa.me/923006262886">💬 WhatsApp: +92 300 6262886</a>
+          <a href="#">📍 Gujrat, Punjab, Pakistan</a>
+          <a href="#">✦ All Gold Hallmarked & Certified</a>
+          <a href="#">✦ GIA Certified Diamonds Available</a>
+        </div>
+      </div>
+      <div>
+        <div class="foot-col-title">Collections</div>
+        <div class="foot-link" onclick="filterP('GOLD',null)">Gold Collection</div>
+        <div class="foot-link" onclick="filterP('DIAMOND',null)">Diamonds</div>
+        <div class="foot-link" onclick="filterP('GEMSTONE',null)">Gemstones</div>
+        <div class="foot-link" onclick="scrollTo2('BRIDAL')">Bridal Showcase</div>
+        <div class="foot-link" onclick="filterP('SILVER',null)">Silver</div>
+      </div>
+      <div>
+        <div class="foot-col-title">Services</div>
+        <div class="foot-link" onclick="openWA('bridal')">Bridal Consultation</div>
+        <div class="foot-link" onclick="openNoor()">AI Sales Manager</div>
+        <div class="foot-link" onclick="openWA('custom')">Custom Orders</div>
+        <div class="foot-link" onclick="scrollTo2('RATES')">Live Gold Rates</div>
+      </div>
+      <div>
+        <div class="foot-col-title">Today's Rates</div>
+        <div class="foot-rate-mini">24K Gold <span>PKR 44,839/g</span></div>
+        <div class="foot-rate-mini">22K Gold <span>PKR 41,099/g</span></div>
+        <div class="foot-rate-mini">21K Gold <span>PKR 39,234/g</span></div>
+        <div class="foot-rate-mini">18K Gold <span>PKR 33,678/g</span></div>
+        <div class="foot-rate-mini">Silver <span>PKR 622/g</span></div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div class="foot-copy">© 2025 Madni Jewellers — Gujrat, Pakistan · All Rights Reserved</div>
+      <div class="foot-cert">✦ Hallmarked · GIA Certified · Authentic Gemstones</div>
+    </div>
+  </footer>
+
+</div><!-- /SITE -->
+
+<!-- FLOATS -->
+<div id="FLOATS">
+  <button class="fb fb-ai" onclick="openNoor()" style="position:relative" title="Sales Manager">💎<div class="fb-badge">1</div></button>
+  <button class="fb fb-wa" onclick="openWA()" title="WhatsApp">💬</button>
+</div>
+
+<!-- NOOR SALES MANAGER -->
+<div id="NOOR">
+  <div class="noor-hd">
+    <div class="noor-av">💎</div>
+    <div class="noor-info">
+      <div class="noor-name">SALES MANAGER</div>
+      <div class="noor-role">Madni Jewellers · Personal Consultant</div>
+      <div class="noor-online"><span class="noor-ndot"></span>Online — Ready to Assist</div>
+    </div>
+    <button class="noor-x" onclick="closeNoor()">✕</button>
+  </div>
+  <div class="noor-chips" id="NCHIPS"></div>
+  <div id="NMSGS"></div>
+  <div class="noor-input-wrap">
+    <input type="text" id="NINPUT" placeholder="Ask about gold rates, bridal sets, diamonds..." maxlength="500" onkeydown="if(event.key==='Enter')sendChat()"/>
+    <button class="noor-send" onclick="sendChat()">➤</button>
+  </div>
+</div>
+
+<!-- PRODUCT DRAWER -->
+<div id="DRAWER">
+  <div class="drw-topbar"></div>
+  <button class="drw-x" onclick="closeDrawer()">✕</button>
+  <div class="drw-body">
+    <img class="drw-img" id="DI" src="" alt="" onerror="this.style.display='none'"/>
+    <div class="drw-metal"  id="DM"></div>
+    <div class="drw-cat"    id="DC"></div>
+    <div class="drw-name"   id="DN"></div>
+    <div class="drw-weight" id="DW"></div>
+    <div class="drw-stars"  id="DS"></div>
+    <div class="drw-desc"   id="DD"></div>
+    <div class="drw-price"  id="DP"></div>
+    <div class="drw-note">Price based on live gold rates · Updated daily</div>
+    <div class="drw-btns">
+      <button class="drw-enq" id="DB">Enquire Now</button>
+      <button class="drw-wa" onclick="waProduct()">💬</button>
+    </div>
+  </div>
+</div>
+
+<!-- AUDIO PLAYER -->
+<audio id="A1" src="https://brzztousmxsbwuyfdovm.supabase.co/storage/v1/object/public/madni%20jewellers.pro/audio1.mp3" loop preload="none"></audio>
+<audio id="A2" src="https://brzztousmxsbwuyfdovm.supabase.co/storage/v1/object/public/madni%20jewellers.pro/audio%202.mp3" loop preload="none"></audio>
+
+<div id="AUDIO">
+  <div class="audio-panel" id="APANEL">
+    <div class="ap-title">MADNI AUDIO</div>
+    <div class="ap-tracks">
+      <div class="ap-track" id="AT1" onclick="switchTrack(1)">
+        <div class="ap-track-icon">🎻</div>
+        <div><div class="ap-track-name">Royal Orchestral</div><div class="ap-track-type">Dark Luxury · Track 1</div></div>
+        <div class="ap-ind"></div>
+      </div>
+      <div class="ap-track" id="AT2" onclick="switchTrack(2)">
+        <div class="ap-track-icon">🎹</div>
+        <div><div class="ap-track-name">Elegant Piano</div><div class="ap-track-type">Soft Luxury · Track 2</div></div>
+        <div class="ap-ind"></div>
+      </div>
+    </div>
+    <div class="ap-controls">
+      <button class="ap-ctrl" onclick="prevTrack()">⏮</button>
+      <button class="ap-ctrl" id="APPLAY" onclick="togglePlay()">▶</button>
+      <button class="ap-ctrl" onclick="nextTrack()">⏭</button>
+    </div>
+    <div class="ap-vol">
+      <span class="ap-vol-icon" onclick="toggleMute()">🔊</span>
+      <input type="range" class="ap-vol-range" id="AVOL" min="0" max="100" value="55" oninput="setVol(this.value)"/>
+      <span class="ap-vol-val" id="AVV">55%</span>
+    </div>
+  </div>
+  <div class="audio-pill" onclick="toggleAudioPanel()">
+    <div class="audio-bars">
+      <div class="audio-bar"></div><div class="audio-bar"></div><div class="audio-bar"></div>
+      <div class="audio-bar"></div><div class="audio-bar"></div>
+    </div>
+    <div class="audio-label" id="ALABEL">MUSIC</div>
+    <div class="audio-arr">▲</div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════
+//  MADNI JEWELLERS — MASTER SCRIPT v2.0
+//  Rolex × Cinematic × Mughal Luxury
+// ═══════════════════════════════════════════════════
+
+const API    = 'https://madni-jewellers.onrender.com'; // Update after deploy
+const WA_NUM = '923006262886';
+const SUPA   = 'https://brzztousmxsbwuyfdovm.supabase.co/storage/v1/object/public/madni%20jewellers.pro';
+
+// ── ALL REAL SUPABASE IMAGES ──
+const IMGS = {
+  i1:  `${SUPA}/0a0a9d55-c7d8-4aad-8f6e-6a78c4dc2d89-473.jpeg`,
+  i2:  `${SUPA}/images%20(1).jpeg`,
+  i3:  `${SUPA}/images%20(3).jpeg`,
+  i5:  `${SUPA}/images%20(5).jpeg`,
+  i6:  `${SUPA}/images%20(6).jpeg`,
+  i7:  `${SUPA}/images%20(7).jpeg`,
+  i8:  `${SUPA}/images%20(8).jpeg`,
+  i9:  `${SUPA}/images%20(9).jpeg`,
+  i10: `${SUPA}/images%20(10).jpeg`,
+  webp:`${SUPA}/RBW-AU-265822-9.53G.webp`,
+};
+const VID1 = `${SUPA}/jewellery%201.mp4`;
+const VID2 = `${SUPA}/jewellery%202.mp4`;
+
+// ── PRODUCTS — 40 items with real images ──
+const PRODUCTS = [
+  // GOLD
+  {id:1, cat:'GOLD',    sub:'Rings',     name:'Royal Signet Ring',          metal:'22K Gold',        weight:'8.5g',  price:349341,  desc:'Hand-engraved royal signet in 22K gold. Timeless masculinity.',          badge:'BESTSELLER', rating:4.9, reviews:214, img:IMGS.i1,   featured:true},
+  {id:2, cat:'GOLD',    sub:'Necklaces', name:'Maharani Chain Necklace',    metal:'22K Gold',        weight:'18g',   price:739782,  desc:'Classic flat link necklace 22K. 18 inches. Lobster clasp.',              badge:'NEW',        rating:4.8, reviews:178, img:IMGS.i2,   featured:true},
+  {id:3, cat:'GOLD',    sub:'Bangles',   name:'Classic Gold Bangle Set',    metal:'22K Gold',        weight:'25g',   price:1027475, desc:'Set of 4 classic gold bangles. 22K hallmarked. Daily elegance.',         badge:null,         rating:4.7, reviews:312, img:IMGS.i3,   featured:false},
+  {id:4, cat:'GOLD',    sub:'Earrings',  name:'Jhumka Drop Earrings',       metal:'22K Gold',        weight:'6g',    price:246594,  desc:'Traditional jhumka with intricate filigree work. 22K gold.',            badge:'HOT',        rating:4.9, reviews:289, img:IMGS.i5,   featured:true},
+  {id:5, cat:'GOLD',    sub:'Chains',    name:'Franco Link Chain 24"',      metal:'22K Gold',        weight:'22g',   price:904178,  desc:'Italian-style franco link. 22K gold. 24 inches. Heavy luxury feel.',    badge:'PREMIUM',    rating:5.0, reviews:96,  img:IMGS.i6,   featured:false},
+  {id:6, cat:'GOLD',    sub:'Rings',     name:'Floral Cocktail Ring',       metal:'21K Gold',        weight:'7g',    price:274638,  desc:'Delicate floral pattern with micro-set stones. 21K. Statement.',       badge:null,         rating:4.8, reviews:143, img:IMGS.i7,   featured:false},
+  {id:7, cat:'GOLD',    sub:'Necklaces', name:'Layered Choker Set',         metal:'18K Gold',        weight:'14g',   price:471492,  desc:'Three-layer modern choker in 18K gold. Contemporary luxury.',          badge:'NEW',        rating:4.7, reviews:167, img:IMGS.i8,   featured:false},
+  {id:8, cat:'GOLD',    sub:'Bangles',   name:'Kundan Kada Bangle',         metal:'22K Gold',        weight:'35g',   price:1438465, desc:'Heavy kundan-set kada. Bridal quality. 22K with meenakari interior.',  badge:'PREMIUM',    rating:5.0, reviews:78,  img:IMGS.i9,   featured:true},
+  {id:9, cat:'GOLD',    sub:'Earrings',  name:'Gold Stud Earrings 24K',     metal:'24K Gold',        weight:'2g',    price:89678,   desc:'Pure 24K gold studs. Minimalist. Investment-grade purity.',             badge:'VALUE',      rating:4.9, reviews:421, img:IMGS.i10,  featured:false},
+  {id:10,cat:'GOLD',    sub:'Rings',     name:'Solitaire Band Ring',        metal:'18K Gold',        weight:'5g',    price:168390,  desc:'Clean solitaire band 18K. Perfect for stacking. Modern minimalism.',   badge:null,         rating:4.8, reviews:234, img:IMGS.webp, featured:false},
+  {id:11,cat:'GOLD',    sub:'Sets',      name:'Gold Necklace & Earring Set',metal:'22K Gold',        weight:'28g',   price:1150772, desc:'Matching necklace and drop earring set 22K. Gift-ready packaging.',     badge:'GIFT',       rating:4.9, reviews:156, img:IMGS.i1,   featured:false},
+  {id:12,cat:'GOLD',    sub:'Chains',    name:'Box Chain Necklace 18"',     metal:'18K Gold',        weight:'10g',   price:336780,  desc:'Fine box chain 18K. Perfect for pendants. Elegant simplicity.',        badge:null,         rating:4.6, reviews:198, img:IMGS.i2,   featured:false},
+  // DIAMONDS
+  {id:13,cat:'DIAMOND', sub:'Rings',     name:'Solitaire Diamond Ring',     metal:'18K White Gold',  weight:'4g',    price:1850000, desc:'0.5 carat SI1 diamond. GIA certified. Classic six-prong setting.',      badge:'CERTIFIED',  rating:5.0, reviews:67,  img:IMGS.i3,   featured:true},
+  {id:14,cat:'DIAMOND', sub:'Earrings',  name:'Diamond Stud Earrings',      metal:'18K White Gold',  weight:'3g',    price:2400000, desc:'0.4ct total VS1 diamonds. 18K white gold. Push-back secure.',          badge:'BESTSELLER', rating:4.9, reviews:143, img:IMGS.i5,   featured:true},
+  {id:15,cat:'DIAMOND', sub:'Necklaces', name:'Diamond Tennis Necklace',    metal:'18K White Gold',  weight:'12g',   price:8500000, desc:'Full diamond tennis necklace. 3.5ct total. VS clarity.',               badge:'LUXURY',     rating:5.0, reviews:34,  img:IMGS.i6,   featured:true},
+  {id:16,cat:'DIAMOND', sub:'Bracelets', name:'Diamond Tennis Bracelet',    metal:'18K White Gold',  weight:'8g',    price:5200000, desc:'2.0ct total tennis bracelet. 18K white gold. Box clasp safety.',       badge:'PREMIUM',    rating:5.0, reviews:28,  img:IMGS.i7,   featured:false},
+  {id:17,cat:'DIAMOND', sub:'Pendants',  name:'Diamond Solitaire Pendant',  metal:'18K Gold',        weight:'3g',    price:950000,  desc:'0.25ct brilliant cut pendant. Yellow gold 18K. Chain included.',        badge:null,         rating:4.8, reviews:89,  img:IMGS.i8,   featured:false},
+  {id:18,cat:'DIAMOND', sub:'Rings',     name:'Halo Engagement Ring',       metal:'18K White Gold',  weight:'5g',    price:3200000, desc:'Centre 0.75ct VVS1. Surrounded by 0.3ct halo. 18K white gold.',        badge:'SIGNATURE',  rating:5.0, reviews:52,  img:IMGS.i9,   featured:false},
+  {id:19,cat:'DIAMOND', sub:'Rings',     name:'Three Stone Diamond Ring',   metal:'18K Gold',        weight:'6g',    price:2800000, desc:'Past Present Future ring. 0.75ct total. SI1 quality.',                 badge:null,         rating:4.9, reviews:41,  img:IMGS.i10,  featured:false},
+  {id:20,cat:'DIAMOND', sub:'Earrings',  name:'Diamond Drop Earrings',      metal:'18K White Gold',  weight:'5g',    price:3600000, desc:'1.0ct pear shaped drops. 18K white gold. GIA certified.',             badge:'GIA',        rating:5.0, reviews:29,  img:IMGS.webp, featured:false},
+  // GEMSTONES
+  {id:21,cat:'GEMSTONE',sub:'Rubies',    name:'Pigeon Blood Ruby Ring',     metal:'22K Gold',        weight:'6g',    price:1250000, desc:'2.5ct Burma pigeon blood ruby. Unheated. 22K. Certificate.',            badge:'RARE',       rating:5.0, reviews:23,  img:IMGS.i1,   featured:true},
+  {id:22,cat:'GEMSTONE',sub:'Emeralds',  name:'Colombian Emerald Necklace', metal:'22K Gold',        weight:'15g',   price:2100000, desc:'3.0ct vivid green Colombian emerald pendant. 22K.',                     badge:'PREMIUM',    rating:4.9, reviews:31,  img:IMGS.i2,   featured:true},
+  {id:23,cat:'GEMSTONE',sub:'Sapphires', name:'Kashmir Blue Sapphire Ring', metal:'18K White Gold',  weight:'5g',    price:1800000, desc:'1.8ct unheated Kashmir blue sapphire. GRS certified.',                  badge:'CERTIFIED',  rating:5.0, reviews:18,  img:IMGS.i3,   featured:false},
+  {id:24,cat:'GEMSTONE',sub:'Rubies',    name:'Ruby & Diamond Bracelet',    metal:'18K Gold',        weight:'12g',   price:1650000, desc:'Natural rubies with VS diamond accents. Total ruby weight 4.5ct.',     badge:null,         rating:4.8, reviews:44,  img:IMGS.i5,   featured:false},
+  {id:25,cat:'GEMSTONE',sub:'Emeralds',  name:'Emerald & Gold Earrings',    metal:'22K Gold',        weight:'7g',    price:890000,  desc:'Natural emerald drops in 22K gold filigree. Vivid green. 1.5ct each.',badge:'NEW',        rating:4.9, reviews:56,  img:IMGS.i6,   featured:false},
+  {id:26,cat:'GEMSTONE',sub:'Mixed',     name:'Five Stone Gemstone Ring',   metal:'22K Gold',        weight:'8g',    price:780000,  desc:'Ruby, emerald, sapphire, topaz, amethyst. 22K gold.',                  badge:'UNIQUE',     rating:4.7, reviews:67,  img:IMGS.i7,   featured:false},
+  {id:27,cat:'GEMSTONE',sub:'Sapphires', name:'Sapphire & Pearl Necklace',  metal:'18K Gold',        weight:'18g',   price:1100000, desc:'Blue sapphire and freshwater pearl alternating necklace. 18K.',        badge:null,         rating:4.8, reviews:39,  img:IMGS.i8,   featured:false},
+  {id:28,cat:'GEMSTONE',sub:'Mixed',     name:'Gemstone Bangle Set',        metal:'22K Gold',        weight:'30g',   price:950000,  desc:'Set of 3. Ruby, emerald, sapphire-set bangles. 22K gold.',             badge:'BRIDAL',     rating:4.9, reviews:82,  img:IMGS.i9,   featured:false},
+  // BRIDAL
+  {id:29,cat:'BRIDAL',  sub:'Full Sets', name:'Maharani Bridal Set',        metal:'22K Gold',        weight:'120g',  price:4931880, desc:'Complete 8-piece. Necklace, earrings, tikka, jhumar, bangles ×4, ring.',badge:'SIGNATURE', rating:5.0, reviews:47,  img:IMGS.i10,  featured:true},
+  {id:30,cat:'BRIDAL',  sub:'Full Sets', name:'Royal Kundan Bridal Set',    metal:'22K Gold',        weight:'95g',   price:3904405, desc:'7-piece kundan set. Deep enamel. Precious stone accents. Heirloom.',   badge:'BESTSELLER', rating:5.0, reviews:63,  img:IMGS.webp, featured:true},
+  {id:31,cat:'BRIDAL',  sub:'Necklaces', name:'Bridal Rani Haar',           metal:'22K Gold',        weight:'55g',   price:2260445, desc:'Long multi-strand Rani Haar 22K. Pearl and gold bead layering.',       badge:null,         rating:4.9, reviews:88,  img:IMGS.i1,   featured:false},
+  {id:32,cat:'BRIDAL',  sub:'Tikka',     name:'Maang Tikka & Jhumar',       metal:'22K Gold',        weight:'18g',   price:739782,  desc:'Matching maang tikka and jhumar set 22K. Stone-set. Bridal essential.',badge:null,         rating:5.0, reviews:112, img:IMGS.i2,   featured:false},
+  {id:33,cat:'BRIDAL',  sub:'Bangles',   name:'Bridal Choora Set',          metal:'22K Gold',        weight:'80g',   price:3287920, desc:'24-piece bridal choora. 22K gold. Mixed kundan and plain designs.',     badge:'POPULAR',    rating:4.9, reviews:134, img:IMGS.i3,   featured:false},
+  {id:34,cat:'BRIDAL',  sub:'Full Sets', name:'Diamond Bridal Collection',  metal:'18K White Gold',  weight:'45g',   price:12500000,desc:'5-piece diamond bridal. 3.5ct total diamonds. White gold.',            badge:'LUXURY',     rating:5.0, reviews:22,  img:IMGS.i5,   featured:true},
+  {id:35,cat:'BRIDAL',  sub:'Rings',     name:'Engagement Ring Set',        metal:'18K Gold',        weight:'8g',    price:2200000, desc:'Engagement and wedding band. 0.5ct diamond centre. 18K.',              badge:'NEW',        rating:5.0, reviews:58,  img:IMGS.i6,   featured:false},
+  {id:36,cat:'BRIDAL',  sub:'Earrings',  name:'Bridal Chandelier Earrings', metal:'22K Gold',        weight:'22g',   price:904178,  desc:'Cascading chandelier earrings 22K. Kundan and pearl drops.',           badge:null,         rating:4.8, reviews:96,  img:IMGS.i7,   featured:false},
+  {id:37,cat:'BRIDAL',  sub:'Full Sets', name:'Emerald Bridal Set',         metal:'22K Gold',        weight:'85g',   price:4292915, desc:'22K gold bridal set with Colombian emerald accents. 6-piece.',         badge:'RARE',       rating:5.0, reviews:15,  img:IMGS.i8,   featured:false},
+  {id:38,cat:'BRIDAL',  sub:'Kamarbandh',name:'Gold Kamarbandh',            metal:'22K Gold',        weight:'40g',   price:1643960, desc:'Traditional waist belt 22K. Adjustable. Kundan centre piece.',         badge:'TRADITIONAL',rating:4.9, reviews:71,  img:IMGS.i9,   featured:false},
+  // SILVER
+  {id:39,cat:'SILVER',  sub:'Rings',     name:'Sterling Silver Ring Set',   metal:'Sterling Silver', weight:'12g',   price:7464,    desc:'Set of 5 sterling silver rings. Oxidised finish. Bohemian elegance.',  badge:'VALUE',      rating:4.7, reviews:189, img:IMGS.i10,  featured:false},
+  {id:40,cat:'SILVER',  sub:'Necklaces', name:'Silver Filigree Necklace',   metal:'Sterling Silver', weight:'20g',   price:12440,   desc:'Intricate filigree silver necklace. Gujrat handcrafted. 16 inch.',    badge:null,         rating:4.8, reviews:143, img:IMGS.webp, featured:false},
+];
+
+const TESTIMONIALS = [
+  {q:"Madni Jewellers crafted my entire bridal set. Every single piece was a dream — exactly as I had imagined for my most sacred day.",name:"Fatima Malik",loc:"Lahore",stars:5},
+  {q:"Third generation customer of Madni. My grandmother, mother and now I. The trust has never wavered. Unmatched quality in all of Punjab.",name:"Maryam Chaudhry",loc:"Gujrat",stars:5},
+  {q:"The Kashmir Blue Sapphire Ring I purchased for my wife's anniversary — she cried when she saw it. That is the power of Madni's craftsmanship.",name:"Asad Rahman",loc:"Islamabad",stars:5},
+  {q:"Ordered the Diamond Tennis Necklace delivered to Dubai. Arrived perfectly packaged, hallmarked, certified. Extraordinary service.",name:"Bilal Hussain",loc:"Dubai, UAE",stars:5},
+  {q:"The live gold rate feature helped me time my purchase perfectly. Transparent, honest, and the most trusted jewellers I have visited.",name:"Kamran Iqbal",loc:"Rawalpindi",stars:5},
+];
+
+const GEMS_SHOWCASE = [
+  {name:'Pigeon Blood Ruby',type:'ruby',  desc:'2.5ct · Burma · Unheated',      price:'PKR 1,250,000', img:IMGS.i1},
+  {name:'Colombian Emerald',type:'emerald',desc:'3.0ct · Vivid Green · Certified',price:'PKR 2,100,000', img:IMGS.i2},
+  {name:'Kashmir Sapphire', type:'sapphire',desc:'1.8ct · Unheated · GRS Certified',price:'PKR 1,800,000',img:IMGS.i3},
+  {name:'GIA Diamond',      type:'diamond',desc:'0.75ct · VVS1 · Brilliant Cut',price:'PKR 487,500',    img:IMGS.i5},
+  {name:'Ruby & Diamond',   type:'ruby',  desc:'4.5ct Total Ruby · VS Accents',  price:'PKR 1,650,000', img:IMGS.i6},
+  {name:'Five Stone Ring',  type:'mixed', desc:'Ruby · Emerald · Sapphire · Mix',price:'PKR 780,000',   img:IMGS.i7},
+];
+
+// ── STATE ──
+let curTheme='royal-dark', curLang='en', curProduct=null, chatHistory=[];
+let curTrack=null, isPlaying=false, isMuted=false, curVol=.55;
+let testiIdx=0, testiTimer=null;
+
+// ── INIT ──
+(function(){
+  const t=localStorage.getItem('mj-theme')||'royal-dark';
+  const l=localStorage.getItem('mj-lang')||'en';
+  curTheme=t; curLang=l;
+  document.body.setAttribute('data-theme',t);
+  document.body.setAttribute('data-lang',l);
+  document.documentElement.setAttribute('dir',['ur','ar'].includes(l)?'rtl':'ltr');
+  document.querySelectorAll('.lg-btn').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
+  // Auto skip auth
+  try{const s=localStorage.getItem('mj-user');if(s){JSON.parse(s);const a=document.getElementById('AUTH');if(a)a.style.display='none';}}catch(e){localStorage.removeItem('mj-user');}
+  // Auth particles
+  buildAuthParticles();
+})();
+
+// ── CURSOR ──
+const CUR=document.getElementById('CUR'),CURR=document.getElementById('CURR'),SPOT=document.getElementById('SPOT');
+document.addEventListener('mousemove',e=>{
+  CUR.style.left=e.clientX+'px'; CUR.style.top=e.clientY+'px';
+  setTimeout(()=>{CURR.style.left=e.clientX+'px';CURR.style.top=e.clientY+'px';},90);
+  SPOT.style.setProperty('--mx',e.clientX+'px');
+  SPOT.style.setProperty('--my',e.clientY+'px');
+  // Cursor trail
+  const d=document.createElement('div');
+  d.style.cssText=`position:fixed;left:${e.clientX}px;top:${e.clientY}px;width:3px;height:3px;border-radius:50%;background:var(--gold);pointer-events:none;z-index:9995;transform:translate(-50%,-50%);opacity:.5`;
+  document.getElementById('CTRAIL').appendChild(d);
+  setTimeout(()=>{d.style.opacity='0';setTimeout(()=>d.remove(),400);},60);
+});
+document.querySelectorAll('button,.pcard,.bridal-card,.gem-card,.tc,.th-btn,.lg-btn,.chip,.foot-link,.rate-card,.bridal-hero').forEach(el=>{
+  el.addEventListener('mouseenter',()=>CURR.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>CURR.classList.remove('hov'));
+});
+
+// ── PARTICLES ──
+(function(){
+  const c=document.getElementById('PCVS'),ctx=c.getContext('2d');
+  let W,H,pts;
+  function init(){
+    W=c.width=window.innerWidth; H=c.height=window.innerHeight;
+    pts=Array.from({length:85},()=>({
+      x:Math.random()*W, y:Math.random()*H,
+      vx:(Math.random()-.5)*.22, vy:-Math.random()*.38-.05,
+      r:Math.random()*1.3+.2, op:Math.random()*.28+.03,
+      col:Math.random()>.55?'201,168,76':'183,110,121',
+      shape:Math.random()>.88?'sq':'circ',
+    }));
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    pts.forEach(p=>{
+      ctx.beginPath();
+      if(p.shape==='sq') ctx.rect(p.x-p.r,p.y-p.r,p.r*2,p.r*2);
+      else ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${p.col},${p.op})`; ctx.fill();
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.y<-5){p.y=H+5;p.x=Math.random()*W;}
+      if(p.x<-5)p.x=W+5; if(p.x>W+5)p.x=-5;
+    });
+    requestAnimationFrame(draw);
+  }
+  init(); draw(); window.addEventListener('resize',init);
+})();
+
+// ── THEME ──
+function setTheme(t){
+  curTheme=t;
+  document.body.setAttribute('data-theme',t);
+  localStorage.setItem('mj-theme',t);
+  document.querySelectorAll('.th-btn').forEach(b=>b.classList.toggle('on',b.getAttribute('onclick')?.includes(t)));
+  toast(t==='royal-dark'?'👑 Royal Dark Gold':t==='rose-gold'?'🌹 Rose Gold':'💎 Diamond White');
+}
+
+// ── LANGUAGE ──
+function setLang(l){
+  curLang=l;
+  document.body.setAttribute('data-lang',l);
+  document.documentElement.setAttribute('dir',['ur','ar'].includes(l)?'rtl':'ltr');
+  localStorage.setItem('mj-lang',l);
+  document.querySelectorAll('.lg-btn').forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
+  buildChips();
+  toast(`Language: ${{en:'English',ur:'اردو',ar:'عربي'}[l]}`);
+}
+
+// ── SPLASH COUNTERS ──
+document.querySelectorAll('[data-target]').forEach(el=>{
+  const tg=parseInt(el.dataset.target); let c=0;
+  const timer=setInterval(()=>{
+    c=Math.min(c+tg/60,tg);
+    el.textContent=Math.floor(c).toLocaleString()+(tg>=100?'%':'+');
+    if(c>=tg)clearInterval(timer);
+  },25);
+});
+
+// ── AUTH ──
+function buildAuthParticles(){
+  const box=document.getElementById('AUTH-PARTICLES'); if(!box)return;
+  for(let i=0;i<16;i++){
+    const d=document.createElement('div');
+    const sz=Math.random()*3.5+1.5, dur=Math.random()*16+10, delay=Math.random()*12;
+    d.className='auth-particle';
+    d.style.cssText=`left:${Math.random()*100}%;width:${sz}px;height:${sz}px;background:rgba(${Math.random()>.5?'201,168,76':'183,110,121'},${Math.random()*.35+.1});animation-duration:${dur}s;animation-delay:${delay}s`;
+    box.appendChild(d);
+  }
+}
+function handleAuth(){
+  const ne=document.getElementById('AUTH-NAME'),pe=document.getElementById('AUTH-PHONE');
+  const ee=document.getElementById('AUTH-ERR'),btn=document.querySelector('.auth-btn');
+  const name=(ne?.value||'').trim(), phone=(pe?.value||'').trim();
+  if(ee)ee.style.display='none';
+  if(!name||name.length<2){if(ee){ee.textContent='Please enter your full name.';ee.style.display='block';}return;}
+  if(phone.replace(/[^0-9]/g,'').length<10){if(ee){ee.textContent='Please enter a valid phone number.';ee.style.display='block';}return;}
+  if(btn){btn.disabled=true;btn.textContent='ENTERING...';}
+  localStorage.setItem('mj-user',JSON.stringify({name,phone,ts:Date.now()}));
+  const a=document.getElementById('AUTH');
+  if(a){a.style.animation='splashOut .8s ease forwards';setTimeout(()=>a.style.display='none',800);}
+  // Background Firebase save
+  tryFBSave(name,phone);
+}
+function authKey(e){if(e.key==='Enter')handleAuth();}
+function tryFBSave(name,phone){
+  import("https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js").then(({initializeApp})=>
+    import("https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js").then(({getFirestore,doc,setDoc,serverTimestamp})=>{
+      try{
+        const app=initializeApp({apiKey:"AIzaSyDEuUS0VFSPt07FO5GknKndLpJvJkltmPA",authDomain:"awgyms-3d1c6.firebaseapp.com",projectId:"awgyms-3d1c6",storageBucket:"awgyms-3d1c6.firebasestorage.app",messagingSenderId:"813193314739",appId:"1:813193314739:web:c76a7c994e88a7b67d0bc6"},'madni2');
+        return setDoc(doc(getFirestore(app),'madni_visitors','u_'+phone.replace(/[^0-9+]/g,'')),{name,phone,lastVisit:serverTimestamp(),theme:curTheme,lang:curLang},{merge:true});
+      }catch(e){}
+    })
+  ).catch(()=>{});
+}
+
+// ── ENTER SITE ──
+function enterSite(){
+  document.getElementById('SPLASH').classList.add('out');
+  setTimeout(()=>{
+    document.getElementById('SPLASH').style.display='none';
+    document.getElementById('SITE').classList.add('on');
+    document.getElementById('FLOATS').style.display='flex';
+    buildTicker(); buildMarquee(); buildRates(); renderProducts('ALL');
+    renderBridal(); renderGems(); renderTestimonials();
+    initObservers(); initScrollAudio();
+    window.addEventListener('scroll',onScroll);
+    document.addEventListener('click',autoPlayAudio,{once:true});
+    document.addEventListener('touchstart',autoPlayAudio,{once:true});
+    setTimeout(()=>{openNoor();addMsg('ai',getGreeting());},1100);
+  },1400);
+}
+
+function onScroll(){
+  document.getElementById('NAV').classList.toggle('scrolled',scrollY>60);
+}
+
+// ── TICKER ──
+function buildTicker(){
+  const items=[
+    {l:'24K Gold',v:'PKR 44,839/g'},{l:'22K Gold',v:'PKR 41,099/g'},{l:'21K Gold',v:'PKR 39,234/g'},
+    {l:'18K Gold',v:'PKR 33,678/g'},{l:'Silver',v:'PKR 622/g'},{l:'24K Per Tola',v:'PKR 478,903'},
+    {l:'Diamond SI1',v:'PKR 285,000/ct'},{l:'Diamond VS1',v:'PKR 420,000/ct'},
+    {l:'Gujrat · Pakistan',v:'✦'},{l:'All Gold Hallmarked',v:'✦'},{l:'GIA Certified',v:'✦'},
+  ];
+  const all=[...items,...items];
+  document.getElementById('TTRACK').innerHTML=all.map(i=>`<div class="tick-item"><span class="tick-gem">✦</span>${i.l} <span class="tick-val">${i.v}</span></div>`).join('');
+}
+
+// ── MARQUEE ──
+function buildMarquee(){
+  const items=['22K Hallmarked Gold','GIA Certified Diamonds','Natural Rubies & Emeralds','Bridal Heritage Sets','Custom Orders','Gujrat Pakistan','Kashmir Sapphires','Colombian Emeralds','Burma Rubies','Live Gold Rates','Nationwide Delivery'];
+  const all=[...items,...items];
+  document.getElementById('MTRACK').innerHTML=all.map(i=>`<div class="marq-item"><span class="marq-gem">✦</span>${i}</div>`).join('');
+}
+
+// ── RATES ──
+function buildRates(){
+  const rates=[
+    {metal:'Gold',karat:'24 Karat',price:'44,839',unit:'Per Gram'},
+    {metal:'Gold',karat:'22 Karat',price:'41,099',unit:'Per Gram'},
+    {metal:'Gold',karat:'21 Karat',price:'39,234',unit:'Per Gram'},
+    {metal:'Gold',karat:'18 Karat',price:'33,678',unit:'Per Gram'},
+    {metal:'Gold',karat:'24K Tola',price:'478,903',unit:'Per Tola · 11.66g'},
+    {metal:'Gold',karat:'22K Tola',price:'438,328',unit:'Per Tola · 11.66g'},
+    {metal:'Silver',karat:'Pure Silver',price:'622',unit:'Per Gram'},
+    {metal:'Silver',karat:'Per Tola',price:'7,256',unit:'Per Tola · 11.66g'},
+    {metal:'Diamond',karat:'SI1 Grade',price:'285,000',unit:'Per Carat'},
+    {metal:'Diamond',karat:'VS1 Grade',price:'420,000',unit:'Per Carat'},
+  ];
+  document.getElementById('RGRID').innerHTML=rates.map(r=>`
+    <div class="rate-card">
+      <div class="rate-metal">${r.metal}</div>
+      <div class="rate-karat">${r.karat}</div>
+      <div class="rate-price">PKR ${r.price}</div>
+      <div class="rate-unit">${r.unit}</div>
+    </div>`).join('');
+}
+
+// ── PRODUCTS ──
+function renderProducts(filter){
+  const items=filter==='ALL'?PRODUCTS:PRODUCTS.filter(p=>p.cat===filter);
+  const emoji={GOLD:'💛',DIAMOND:'💎',GEMSTONE:'💍',BRIDAL:'👰',SILVER:'🥈'};
+  document.getElementById('PGRID').innerHTML=items.map((p,i)=>`
+    <div class="pcard" style="animation:fadeUp .45s ${i*.035}s both" onclick="openDrawer(${p.id})">
+      <div class="pcard-spot"></div>
+      <div class="pc-img-wrap">
+        <img class="pc-img" src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextSibling.style.display='flex'">
+        <div class="pc-emoji" style="display:none">${emoji[p.cat]||'✦'}</div>
+        ${p.badge?`<div class="pc-badge">${p.badge}</div>`:''}
+        <div class="pc-cat-tag">${p.cat}</div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-metal">${p.metal}</div>
+        <div class="pc-name">${p.name}</div>
+        <div class="pc-weight">${p.weight}</div>
+        <div class="pc-desc">${p.desc}</div>
+        <div class="pc-foot">
+          <div class="pc-price">PKR ${p.price.toLocaleString()}</div>
+          <div class="pc-rating">${'★'.repeat(Math.floor(p.rating))} ${p.rating}</div>
+        </div>
+        <div class="pc-btns">
+          <button class="pc-enquire" onclick="event.stopPropagation();waP(${p.id})">Enquire</button>
+          <button class="pc-wa" onclick="event.stopPropagation();waP(${p.id})">💬</button>
+        </div>
+      </div>
+    </div>`).join('') + '<div class="pc-grid-pad"></div>';
+}
+function filterP(cat,btn){
+  if(btn){document.querySelectorAll('.ftab').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}
+  renderProducts(cat);
+  if(cat!=='ALL')scrollTo2('COLLECTION');
+}
+
+// ── BRIDAL GRID ──
+function renderBridal(){
+  const bridal=PRODUCTS.filter(p=>p.cat==='BRIDAL').slice(1,5);
+  const imgs=[IMGS.i1,IMGS.i2,IMGS.i3,IMGS.i5];
+  document.getElementById('BGRID').innerHTML=bridal.map((p,i)=>`
+    <div class="bridal-card" onclick="openDrawer(${p.id})">
+      <img src="${imgs[i]||p.img}" alt="${p.name}" loading="lazy">
+      <div class="bridal-card-ov"></div>
+      <div class="bridal-card-body">
+        <div class="bridal-card-cat">${p.sub}</div>
+        <div class="bridal-card-name">${p.name}</div>
+        <div class="bridal-card-price">PKR ${p.price.toLocaleString()}</div>
+      </div>
+    </div>`).join('');
+}
+
+// ── GEMS ──
+function renderGems(){
+  document.getElementById('GGRID').innerHTML=GEMS_SHOWCASE.map(g=>`
+    <div class="gem-card" onclick="toast('${g.name} — ${g.desc}')">
+      <img src="${g.img}" alt="${g.name}" loading="lazy" onerror="this.style.display='none'">
+      <div class="gem-ov"></div>
+      <div class="gem-body">
+        <div class="gem-type ${g.type}">${g.type.toUpperCase()}</div>
+        <div class="gem-name">${g.name}</div>
+        <div class="gem-price">${g.price}</div>
+      </div>
+    </div>`).join('');
+}
+
+// ── TESTIMONIALS — ROLEX SINGLE QUOTE ──
+function renderTestimonials(){
+  const wrap=document.getElementById('TQWRAP');
+  wrap.innerHTML=TESTIMONIALS.map((t,i)=>`
+    <div class="testi-quote ${i===0?'vis':''}" id="TQ${i}">
+      <span class="testi-q-mark">❝</span>
+      ${t.q}
+      <div class="testi-author">${t.name} · ${t.loc}</div>
+    </div>`).join('');
+  // Dots
+  document.getElementById('TDOTS').innerHTML=TESTIMONIALS.map((_,i)=>`<div class="testi-dot ${i===0?'on':''}" onclick="goTesti(${i})"></div>`).join('');
+  testiTimer=setInterval(()=>goTesti((testiIdx+1)%TESTIMONIALS.length),5500);
+}
+function goTesti(idx){
+  document.querySelectorAll('.testi-quote').forEach((q,i)=>q.classList.toggle('vis',i===idx));
+  document.querySelectorAll('.testi-dot').forEach((d,i)=>d.classList.toggle('on',i===idx));
+  testiIdx=idx;
+}
+
+// ── DRAWER ──
+function openDrawer(id){
+  const p=PRODUCTS.find(x=>x.id===id); if(!p)return; curProduct=p;
+  document.getElementById('DI').src=p.img;
+  document.getElementById('DM').textContent=p.metal;
+  document.getElementById('DC').textContent=`${p.cat} · ${p.sub}`;
+  document.getElementById('DN').textContent=p.name;
+  document.getElementById('DW').textContent=`Weight: ${p.weight}`;
+  document.getElementById('DS').textContent='★'.repeat(Math.floor(p.rating))+` ${p.rating} · ${p.reviews} reviews`;
+  document.getElementById('DD').textContent=p.desc;
+  document.getElementById('DP').textContent=`PKR ${p.price.toLocaleString()}`;
+  document.getElementById('DB').onclick=()=>waP(p.id);
+  document.getElementById('DRAWER').classList.add('on');
+}
+function closeDrawer(){document.getElementById('DRAWER').classList.remove('on');curProduct=null;}
+function waP(id){
+  const p=PRODUCTS.find(x=>x.id===id); if(!p)return;
+  window.open(`https://wa.me/${WA_NUM}?text=${encodeURIComponent(`As-salamu alaykum! I am interested in *${p.name}* (${p.metal}, ${p.weight}) — PKR ${p.price.toLocaleString()}. Please share more details.`)}`,'_blank');
+}
+function waProduct(){curProduct?waP(curProduct.id):openWA();}
+
+// ── WHATSAPP ──
+function openWA(type=''){
+  const msgs={
+    bridal:`As-salamu alaykum! I would like to book a bridal jewellery consultation at Madni Jewellers, Gujrat. Please advise availability.`,
+    custom:`As-salamu alaykum! I am interested in a custom jewellery order from Madni Jewellers. Please contact me.`,
+    default:`As-salamu alaykum! I visited madnijewellers.com and would like to enquire about your collection.`,
+  };
+  window.open(`https://wa.me/${WA_NUM}?text=${encodeURIComponent(msgs[type]||msgs.default)}`,'_blank');
+}
+
+// ── NOOR SALES MANAGER ──
+function openNoor(){document.getElementById('NOOR').classList.add('on');}
+function closeNoor(){document.getElementById('NOOR').classList.remove('on');}
+function getGreeting(){
+  const g={
+    en:`Welcome to **Madni Jewellers** — Gujrat's most prestigious jewellery house. 💎\n\nI am your personal Sales Manager. I can assist with:\n\n✦ Live gold & silver rates\n✦ Bridal collection guidance\n✦ Diamond certification queries\n✦ Custom order requests\n✦ Booking in-store appointments\n\nHow may I assist you today?`,
+    ur:`**مدنی جیولرز** میں خوش آمدید — گجرات کا سب سے معزز جیولری ہاؤس۔ 💎\n\nمیں آپ کا ذاتی سیلز مینیجر ہوں۔ میں مدد کر سکتا ہوں:\n\n✦ لائیو سونے کے ریٹ\n✦ دلہن مجموعے کی رہنمائی\n✦ ہیرے کی سرٹیفیکیشن\n✦ کسٹم آرڈر\n\nآج کیسے مدد کروں؟`,
+    ar:`مرحباً بكم في **مدني جيولرز** — أرقى دار مجوهرات في غوجرات. 💎\n\nأنا مدير مبيعاتك الشخصي. يمكنني المساعدة في:\n\n✦ أسعار الذهب المباشرة\n✦ توجيه مجموعة العرائس\n✦ شهادات الألماس\n✦ طلبات مخصصة\n\nكيف أخدمك اليوم؟`,
+  };
+  return g[curLang]||g.en;
+}
+function buildChips(){
+  const chips={
+    en:['Gold Rates','Bridal Sets','Diamond Rings','Custom Order','Gemstones','Book Appointment'],
+    ur:['سونے کے ریٹ','دلہن سیٹ','ہیرے کی انگوٹھی','کسٹم آرڈر','قیمتی پتھر','ملاقات بک کریں'],
+    ar:['أسعار الذهب','طقم عرائس','خواتم ألماس','طلب خاص','أحجار كريمة','احجز موعداً'],
+  };
+  const queries={
+    en:['What are the live gold rates today?','Show bridal sets under PKR 5 million','Diamond engagement ring recommendations?','I want a custom piece made','Rubies and emeralds available?','Book an in-store appointment'],
+    ur:['آج کے سونے کے ریٹ کیا ہیں؟','PKR 50 لاکھ میں دلہن سیٹ','ہیرے کی انگوٹھی کی سفارش؟','کسٹم زیور بنوانا ہے','یاقوت اور زمرد دستیاب ہیں؟','اسٹور میں ملاقات بک کریں'],
+    ar:['ما أسعار الذهب اليوم؟','طقم عرائس بأقل من 5 مليون؟','توصية خاتم ألماس؟','أريد قطعة مخصصة','هل الياقوت والزمرد متوفر؟','احجز موعداً في المتجر'],
+  };
+  const c=chips[curLang]||chips.en;
+  const q=queries[curLang]||queries.en;
+  const box=document.getElementById('NCHIPS');
+  if(box)box.innerHTML=c.map((label,i)=>`<button class="chip" onclick="chipMsg('${q[i].replace(/'/g,"&#39;")}')">${label}</button>`).join('');
+}
+function addMsg(role,text){
+  const box=document.getElementById('NMSGS');
+  const d=document.createElement('div');
+  d.className=`msg msg-${role}`;
+  const tm=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+  d.innerHTML=`<div class="msg-b">${text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>').replace(/✦/g,'<span style="color:var(--gold)">✦</span>')}</div><div class="msg-time">${role==='ai'?'SALES MANAGER · ':'YOU · '}${tm}</div>`;
+  box.appendChild(d); box.scrollTop=box.scrollHeight;
+  chatHistory.push({role:role==='ai'?'assistant':'user',content:text});
+}
+function showTyping(){
+  const b=document.getElementById('NMSGS');
+  const d=document.createElement('div');d.className='msg msg-ai';d.id='NTYP';
+  d.innerHTML='<div class="typing"><div class="tdot"></div><div class="tdot"></div><div class="tdot"></div></div>';
+  b.appendChild(d);b.scrollTop=b.scrollHeight;
+}
+function hideTyping(){document.getElementById('NTYP')?.remove();}
+async function sendChat(){
+  const inp=document.getElementById('NINPUT');
+  const text=inp.value.trim(); if(!text)return; inp.value='';
+  addMsg('user',text); await callAPI(text);
+}
+async function chipMsg(text){addMsg('user',text);await callAPI(text);}
+async function callAPI(text){
+  showTyping();
+  try{
+    const ctrl=new AbortController();const to=setTimeout(()=>ctrl.abort(),14000);
+    const res=await fetch(`${API}/api/chat`,{
+      method:'POST',headers:{'Content-Type':'application/json','X-Client':'madni-web-v2'},
+      body:JSON.stringify({messages:chatHistory.slice(-10),userText:text,productContext:curProduct,language:curLang}),
+      signal:ctrl.signal,
+    });
+    clearTimeout(to);
+    if(!res.ok)throw new Error();
+    const data=await res.json();
+    hideTyping(); if(data.reply)addMsg('ai',data.reply);
+  }catch(e){hideTyping();addMsg('ai',getFallback(text));}
+}
+function getFallback(text){
+  const lo=text.toLowerCase();
+  const fb={
+    en:{
+      gold:`**Current Gold Rates** (Pakistan Sarafa, 21 March 2026):\n\n✦ 24K — PKR 44,839/gram | PKR 478,903/tola\n✦ 22K — PKR 41,099/gram | PKR 438,328/tola\n✦ 21K — PKR 39,234/gram\n✦ 18K — PKR 33,678/gram\n✦ Silver — PKR 622/gram\n\nRates updated daily. Shall I connect you on WhatsApp? +92 300 6262886`,
+      bridal:`**Our Bridal Showcase** — complete sets from PKR 3.9M:\n\n👰 **Maharani Bridal Set** — PKR 4,931,880\n👑 **Royal Kundan Set** — PKR 3,904,405\n💎 **Diamond Bridal Collection** — PKR 12,500,000\n\nAll sets include necklace, earrings, tikka, bangles & more.\n\nBook a personal consultation: +92 300 6262886`,
+      diamond:`**Diamond Collection** — GIA Certified:\n\n✦ SI1 — PKR 285,000/carat\n✦ VS1 — PKR 420,000/carat\n✦ VVS1 — PKR 650,000/carat\n\nAll set in 18K white or yellow gold. Starting PKR 950,000.\n\nWhatsApp: +92 300 6262886`,
+      default:`Welcome to **Madni Jewellers** — Gujrat's finest house of jewellery. ✦\n\nWe specialise in:\n✦ 18K · 21K · 22K · 24K Gold\n✦ GIA Certified Diamonds\n✦ Natural Rubies, Emeralds, Sapphires\n✦ Complete Bridal Sets\n\nWhatsApp: +92 300 6262886`,
+    },
+    ur:{default:`**مدنی جیولرز** میں خوش آمدید۔ ہمارے پاس سونے، ہیرے، قیمتی پتھروں اور دلہن کے زیورات کا بہترین مجموعہ ہے۔\n\nواٹس ایپ: +92 300 6262886`},
+    ar:{default:`مرحباً بـ**مدني جيولرز**. لدينا مجموعات ذهب وألماس وأحجار كريمة وعرائس.\n\nواتساب: +92 300 6262886`},
+  };
+  const s=fb[curLang]||fb.en;
+  if(/gold|rate|tola|gram|سونا|ذهب|قیمت|سعر/i.test(lo))return s.gold||fb.en.gold;
+  if(/bridal|wedding|shadi|دلہن|عروس/i.test(lo))return s.bridal||fb.en.bridal;
+  if(/diamond|heera|ألماس|ہیرا/i.test(lo))return s.diamond||fb.en.diamond;
+  return s.default||fb.en.default;
+}
+
+// ── AUDIO ENGINE ──
+const TRACKS={1:null,2:null};
+(function(){
+  TRACKS[1]=document.getElementById('A1');
+  TRACKS[2]=document.getElementById('A2');
+  Object.values(TRACKS).forEach(t=>{if(t)t.volume=curVol;});
+})();
+function autoPlayAudio(){if(!curTrack)switchTrack(1);}
+function toggleAudioPanel(){document.getElementById('AUDIO').classList.toggle('aopen');}
+function switchTrack(n){
+  if(curTrack&&curTrack!==n){fadeOut(TRACKS[curTrack],()=>{TRACKS[curTrack].pause();TRACKS[curTrack].currentTime=0;});document.getElementById('AT'+curTrack)?.classList.remove('on');}
+  curTrack=n;
+  document.getElementById('AT'+n)?.classList.add('on');
+  document.getElementById('ALABEL').textContent=n===1?'ROYAL ORCHESTRAL':'ELEGANT PIANO';
+  const el=TRACKS[n]; el.volume=0; el.currentTime=0;
+  el.play().then(()=>{fadeIn(el,curVol);setPlayState(true);}).catch(()=>setPlayState(false));
+}
+function togglePlay(){
+  if(!curTrack){switchTrack(1);return;}
+  const el=TRACKS[curTrack];
+  if(isPlaying){fadeOut(el,()=>el.pause());setPlayState(false);}
+  else{el.play().then(()=>{fadeIn(el,curVol);setPlayState(true);});}
+}
+function prevTrack(){switchTrack(curTrack===1?2:1);}
+function nextTrack(){switchTrack(curTrack===2?1:2);}
+function setVol(v){curVol=v/100;document.getElementById('AVV').textContent=v+'%';if(curTrack&&!isMuted)TRACKS[curTrack].volume=curVol;}
+function toggleMute(){isMuted=!isMuted;if(curTrack)TRACKS[curTrack].volume=isMuted?0:curVol;document.querySelector('.ap-vol-icon').textContent=isMuted?'🔇':'🔊';}
+function setPlayState(p){isPlaying=p;document.getElementById('AUDIO').classList.toggle('playing',p);document.getElementById('APPLAY').textContent=p?'⏸':'▶';}
+function fadeIn(el,t,d=700){el.volume=0;const s=t/25,iv=d/25;let i=0;const tm=setInterval(()=>{i++;el.volume=Math.min(el.volume+s,t);if(i>=25)clearInterval(tm);},iv);}
+function fadeOut(el,cb,d=500){const sv=el.volume,s=sv/20,iv=d/20;let i=0;const tm=setInterval(()=>{i++;el.volume=Math.max(el.volume-s,0);if(i>=20){clearInterval(tm);if(cb)cb();}},iv);}
+
+// Section-based audio switching
+function initScrollAudio(){
+  const sections=[
+    {id:'COLLECTION',track:1},{id:'BRIDAL',track:2},{id:'GEMS',track:1},
+    {id:'CRAFTING',track:2},{id:'TESTI',track:1},
+  ];
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const sec=sections.find(s=>s.id===e.target.id);
+        if(sec&&isPlaying&&curTrack!==sec.track)switchTrack(sec.track);
+      }
+    });
+  },{threshold:.4});
+  sections.forEach(s=>{const el=document.getElementById(s.id);if(el)obs.observe(el);});
+}
+
+// ── INTERSECTION OBSERVERS ──
+function initObservers(){
+  // Video bands
+  const vbObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      const q=e.target.querySelector('.vid-band-quote');
+      const a=e.target.querySelector('.vid-band-attr');
+      if(q)q.classList.toggle('vis',e.isIntersecting);
+      if(a)a.classList.toggle('vis',e.isIntersecting);
+    });
+  },{threshold:.4});
+  ['VB1','VB2'].forEach(id=>{const el=document.getElementById(id);if(el)vbObs.observe(el);});
+  // Scroll reveal
+  const revObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.style.animation='fadeUp .75s ease both';});
+  },{threshold:.08});
+  document.querySelectorAll('.sec-hd,.rate-card,.craft-stat,.bridal-card').forEach(el=>revObs.observe(el));
+  // Refraction on diamond section
+  const diamObs=new IntersectionObserver(entries=>{
+    document.getElementById('REFRACTION').style.opacity=entries[0].isIntersecting?'1':'0';
+  },{threshold:.3});
+  const diamSec=document.querySelector('[onclick*="DIAMOND"]');
+  if(diamSec)diamObs.observe(diamSec);
+  buildChips();
+}
+
+// ── UTILS ──
+function scrollTo2(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth'});}
+function toast(msg){document.querySelector('.toast')?.remove();const d=document.createElement('div');d.className='toast';d.textContent=msg;document.body.appendChild(d);setTimeout(()=>d.remove(),3000);}
+const style=document.createElement('style');
+style.textContent=`@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}`;
+document.head.appendChild(style);
+</script>
+</body>
+</html>
